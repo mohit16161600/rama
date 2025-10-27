@@ -1,0 +1,4 @@
+/**
+ * Minimal global styles and layout for an elegant look.
+ */
+:root{--brand:#8a2be2;--dark:#222;--muted:#666;--bg:#fff;--accent:#f3e8ff}@media(prefers-color-scheme:dark){:root{--bg:#0b0b0b;--dark:#f1f1f1;--muted:#aaa;--accent:#1c0f2b}}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;line-height:1.5;background:var(--bg);color:var(--dark)}a{color:inherit;text-decoration:none}img{max-width:100

@@ -1,0 +1,12 @@
+<h1>Categories</h1>
+<div class="grid">
+	<% categories.forEach(c => { %>
+		<a class="card" href="/category/<%= c.id %>">
+			<img src="<%= c.heroImage %>" alt="<%= c.name %>" onerror="this.src='https://picsum.photos/seed/'+encodeURIComponent('<%= c.id %>')+'/600/400'"/>
+			<div class="card-body">
+				<h3><%= c.name %></h3>
+				<p class="muted"><%= c.description %></p>
+			</div>
+		</a>
+	<% }) %>
+</div>

@@ -1,0 +1,20 @@
+<h1>Your Watchlist</h1>
+<% if (items.length === 0) { %>
+	<p class="muted">No items in watchlist.</p>
+<% } else { %>
+	<div class="grid">
+		<% items.forEach(p => { %>
+			<div class="card">
+				<a href="/product/<%= p.id %>"><img src="<%= (p.images&&p.images[0]) || '' %>" alt="<%= p.name %>" onerror="this.src='https://picsum.photos/seed/'+encodeURIComponent('<%= p.id %>')+'/600/400'"/></a>
+				<div class="card-body">
+					<h3><a href="/product/<%= p.id %>"><%= p.name %></a></h3>
+					<p class="price">₹ <%= p.price.toLocaleString('en-IN') %></p>
+					<div style="display:flex; gap:8px;">
+						<button class="pill" onclick="postJSON('/cart/add',{productId:'<%= p.id %>', qty:1}).then(()=>location.href='/cart')">Add to cart</button>
+						<button onclick="postJSON('/watchlist/toggle',{productId:'<%= p.id %>'}).then(()=>location.reload())">Remove ❤</button>
+					</div>
+				</div>
+			</div>
+		<% }) %>
+	</div>
+<% } %>

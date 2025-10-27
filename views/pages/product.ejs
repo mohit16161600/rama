@@ -1,0 +1,25 @@
+<div class="grid" style="grid-template-columns:1.1fr 1fr;align-items:start;gap:24px;">
+	<div>
+		<img src="<%= (product.images&&product.images[0]) || '' %>" alt="<%= product.name %>" onerror="this.src='https://picsum.photos/seed/'+encodeURIComponent('<%= product.id %>')+'/800/600'"/>
+	</div>
+	<div>
+		<h1><%= product.name %></h1>
+		<p class="price">₹ <%= product.price.toLocaleString('en-IN') %></p>
+		<p class="muted"><%= product.description %></p>
+		<% if (product.options) { Object.entries(product.options).forEach(([k,vals])=>{ %>
+			<div style="margin:12px 0;">
+				<label style="display:block;font-weight:600;margin-bottom:6px;text-transform:capitalize;"> <%= k %> </label>
+				<select style="padding:8px;border-radius:8px;border:1px solid #ddd;width:100%">
+					<% vals.forEach(v=>{ %>
+						<option><%= v %></option>
+					<% }) %>
+				</select>
+			</div>
+		<% }) } %>
+		<div style="display:flex; gap:8px; align-items:center; margin-top:8px;">
+			<input id="qty" type="number" min="1" value="1" style="width:80px;padding:8px;border-radius:8px;border:1px solid #ddd"/>
+			<button class="pill" onclick="postJSON('/cart/add',{productId:'<%= product.id %>', qty:document.getElementById('qty').value}).then(()=>location.href='/cart')">Add to cart</button>
+			<button onclick="postJSON('/watchlist/toggle',{productId:'<%= product.id %>'}).then(()=>location.reload())">❤ <%= (session.watchlist||[]).includes(product.id)?'Watching':'Watch' %></button>
+		</div>
+	</div>
+</div>

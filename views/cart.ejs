@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title><%= (title ? title + ' · ' : '') %><%= store.name %></title>
+		<link rel="stylesheet" href="/css/styles.css" />
+	</head>
+	<body>
+		<header class="header">
+			<div class="container nav">
+				<a href="/" class="brand"><%= store.name %></a>
+				<a href="/categories">Categories</a>
+				<span class="spacer"></span>
+				<a href="/watchlist" class="pill">Watchlist (<%= (session.watchlist||[]).length %>)</a>
+				<a href="/cart" class="pill">Cart (<%= (session.cart||[]).reduce((n,ci)=>n+ci.qty,0) %>)</a>
+			</div>
+		</header>
+		<main class="container">
+			<h1>Your Cart</h1>
+<% if (cartItems.length === 0) { %>
+	<p class="muted">Your cart is empty.</p>
+<% } else { %>
+	<div class="grid">
+		<% cartItems.forEach(ci => { const p = ci.product; if (!p) return; %>
+			<div class="card">
+				<div class="card-body">
+					<div style="display:flex; gap:12px; align-items:center;">
+						<img src="<%= (p.images&&p.images[0]) || '' %>" alt="<%= p.name %>" style="width:120px;height:90px;object-fit:cover" onerror="this.src='https://picsum.photos/seed/'+encodeURIComponent('<%= p.id %>')+'/300/200'"/>
+						<div style="flex:1;">
+							<h3><a href="/product/<%= p.id %>"><%= p.name %></a></h3>
+							<p class="muted">₹ <%= p.price.toLocaleString('en-IN') %></p>
+							<div style="display:flex; gap:8px; align-items:center;">
+								<input type="number" min="1" value="<%= ci.qty %>" style="width:80px;padding:8px;border-radius:8px;border:1px solid #ddd" onchange="postJSON('/cart/update',{productId:'<%= p.id %>', qty:this.value}).then(()=>location.reload())"/>
+								<button onclick="postJSON('/cart/remove',{productId:'<%= p.id %>'}).then(()=>location.reload())">Remove</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% }) %>
+	</div>
+	<div style="text-align:right; margin-top:16px;">
+		<h3>Subtotal: ₹ <%= subtotal.toLocaleString('en-IN') %></h3>
+		<p class="muted">Tailoring and delivery calculated after measurements.</p>
+		<button class="pill" onclick="alert('Thank you! A tailor will contact you for measurements.')">Proceed</button>
+	</div>
+<% } %>
+
+		</main>
+		<footer class="footer container">
+			<div>&copy; <%= new Date().getFullYear() %> <%= store.name %> — <%= store.tagline %></div>
+		</footer>
+		<script>
+		async function postJSON(url, data){
+			const r = await fetch(url,{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
+			return r.json();
+		}
+		</script>
+	</body>
+</html>

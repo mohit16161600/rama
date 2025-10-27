@@ -1,0 +1,66 @@
+{
+  "store": {
+    "name": "Sartaj Tailored Indian Dresses",
+    "tagline": "Made-to-measure elegance",
+    "currency": "INR"
+  },
+  "categories": [
+    {
+      "id": "lehenga",
+      "name": "Lehenga",
+      "heroImage": "/img/lehenga-hero.jpg",
+      "description": "Handcrafted lehengas tailored to your measurements."
+    },
+    {
+      "id": "saree",
+      "name": "Saree Blouses",
+      "heroImage": "/img/saree-hero.jpg",
+      "description": "Bespoke blouses that fit like a dream."
+    },
+    {
+      "id": "salwar",
+      "name": "Salwar Suits",
+      "heroImage": "/img/salwar-hero.jpg",
+      "description": "Churidars, Anarkalis, and more, cut to perfection."
+    }
+  ],
+  "products": [
+    {
+      "id": "lehenga-rose-gold",
+      "categoryId": "lehenga",
+      "name": "Rose Gold Zari Lehenga",
+      "price": 29999,
+      "images": ["/img/lehenga1.jpg"],
+      "description": "Intricate zari work with organza dupatta. Tailored to your exact size.",
+      "options": {
+        "fabric": ["Silk", "Organza", "Georgette"],
+        "length": ["Standard", "Floor", "Custom"],
+        "work": ["Zari", "Mirror", "Gota"]
+      }
+    },
+    {
+      "id": "blouse-kundan",
+      "categoryId": "saree",
+      "name": "Kundan Work Blouse",
+      "price": 4999,
+      "images": ["/img/blouse1.jpg"],
+      "description": "Statement kundan accents with secure lining.",
+      "options": {
+        "neckline": ["Boat", "V-neck", "Sweetheart"],
+        "sleeves": ["Sleeveless", "Elbow", "Full"]
+      }
+    },
+    {
+      "id": "anarkali-emerald",
+      "categoryId": "salwar",
+      "name": "Emerald Anarkali Set",
+      "price": 14999,
+      "images": ["/img/anarkali1.jpg"],
+      "description": "Flowing silhouette with hand-embroidered yoke.",
+      "options": {
+        "dupatta": ["Yes", "No"],
+        "length": ["Knee", "Ankle", "Floor"]
+      }
+    }
+  ]
+}

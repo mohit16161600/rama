@@ -1,0 +1,43 @@
+<% /* Hero */ %>
+<section class="hero">
+	<div>
+		<h1>Tailored Indian Dresses</h1>
+		<p class="muted">Crafted to your measurements for comfort and confidence.</p>
+		<p><a class="pill" href="/categories">Explore Categories</a></p>
+	</div>
+	<div>
+		<img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=1600&auto=format&fit=crop" alt="Tailored Dresses" />
+	</div>
+</section>
+
+<% /* Categories grid */ %>
+<h2>Shop by Category</h2>
+<div class="grid">
+	<% featuredCategories.forEach(c => { %>
+		<a class="card" href="/category/<%= c.id %>">
+			<img src="<%= c.heroImage %>" alt="<%= c.name %>" onerror="this.src='https://picsum.photos/seed/'+encodeURIComponent('<%= c.id %>')+'/600/400'"/>
+			<div class="card-body">
+				<h3><%= c.name %></h3>
+				<p class="muted"><%= c.description %></p>
+			</div>
+		</a>
+	<% }) %>
+</div>
+
+<% /* Featured products */ %>
+<h2 style="margin-top:28px;">Featured</h2>
+<div class="grid">
+	<% featuredProducts.forEach(p => { %>
+		<div class="card">
+			<a href="/product/<%= p.id %>"><img src="<%= (p.images&&p.images[0]) || '' %>" alt="<%= p.name %>" onerror="this.src='https://picsum.photos/seed/'+encodeURIComponent('<%= p.id %>')+'/600/400'"/></a>
+			<div class="card-body">
+				<h3><a href="/product/<%= p.id %>"><%= p.name %></a></h3>
+				<p class="price">₹ <%= p.price.toLocaleString('en-IN') %></p>
+				<div style="display:flex; gap:8px;">
+					<button class="pill" onclick="postJSON('/cart/add',{productId:'<%= p.id %>', qty:1}).then(()=>location.reload())">Add to cart</button>
+					<button onclick="postJSON('/watchlist/toggle',{productId:'<%= p.id %>'}).then(()=>location.reload())">❤ Watch</button>
+				</div>
+			</div>
+		</div>
+	<% }) %>
+</div>

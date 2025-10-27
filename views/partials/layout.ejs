@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title><%= (title ? title + ' · ' : '') %><%= store.name %></title>
+		<link rel="stylesheet" href="/css/styles.css" />
+	</head>
+	<body>
+		<header class="header">
+			<div class="container nav">
+				<a href="/" class="brand"><%= store.name %></a>
+				<a href="/categories">Categories</a>
+				<span class="spacer"></span>
+				<a href="/watchlist" class="pill">Watchlist (<%= (session.watchlist||[]).length %>)</a>
+				<a href="/cart" class="pill">Cart (<%= (session.cart||[]).reduce((n,ci)=>n+ci.qty,0) %>)</a>
+			</div>
+		</header>
+		<main class="container">
+			<%- body %>
+		</main>
+		<footer class="footer container">
+			<div>&copy; <%= new Date().getFullYear() %> <%= store.name %> — <%= store.tagline %></div>
+		</footer>
+		<script>
+		async function postJSON(url, data){
+			const r = await fetch(url,{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
+			return r.json();
+		}
+		</script>
+	</body>
+</html>

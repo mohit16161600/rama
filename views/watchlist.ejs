@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title><%= (title ? title + ' · ' : '') %><%= store.name %></title>
+		<link rel="stylesheet" href="/css/styles.css" />
+	</head>
+	<body>
+		<header class="header">
+			<div class="container nav">
+				<a href="/" class="brand"><%= store.name %></a>
+				<a href="/categories">Categories</a>
+				<span class="spacer"></span>
+				<a href="/watchlist" class="pill">Watchlist (<%= (session.watchlist||[]).length %>)</a>
+				<a href="/cart" class="pill">Cart (<%= (session.cart||[]).reduce((n,ci)=>n+ci.qty,0) %>)</a>
+			</div>
+		</header>
+		<main class="container">
+			<h1>Your Watchlist</h1>
+<% if (items.length === 0) { %>
+	<p class="muted">No items in watchlist.</p>
+<% } else { %>
+	<div class="grid">
+		<% items.forEach(p => { %>
+			<div class="card">
+				<a href="/product/<%= p.id %>"><img src="<%= (p.images&&p.images[0]) || '' %>" alt="<%= p.name %>" onerror="this.src='https://picsum.photos/seed/'+encodeURIComponent('<%= p.id %>')+'/600/400'"/></a>
+				<div class="card-body">
+					<h3><a href="/product/<%= p.id %>"><%= p.name %></a></h3>
+					<p class="price">₹ <%= p.price.toLocaleString('en-IN') %></p>
+					<div style="display:flex; gap:8px;">
+						<button class="pill" onclick="postJSON('/cart/add',{productId:'<%= p.id %>', qty:1}).then(()=>location.href='/cart')">Add to cart</button>
+						<button onclick="postJSON('/watchlist/toggle',{productId:'<%= p.id %>'}).then(()=>location.reload())">Remove ❤</button>
+					</div>
+				</div>
+			</div>
+		<% }) %>
+	</div>
+<% } %>
+
+		</main>
+		<footer class="footer container">
+			<div>&copy; <%= new Date().getFullYear() %> <%= store.name %> — <%= store.tagline %></div>
+		</footer>
+		<script>
+		async function postJSON(url, data){
+			const r = await fetch(url,{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
+			return r.json();
+		}
+		</script>
+	</body>
+</html>

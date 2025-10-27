@@ -1,0 +1,29 @@
+<h1>Your Cart</h1>
+<% if (cartItems.length === 0) { %>
+	<p class="muted">Your cart is empty.</p>
+<% } else { %>
+	<div class="grid">
+		<% cartItems.forEach(ci => { const p = ci.product; if (!p) return; %>
+			<div class="card">
+				<div class="card-body">
+					<div style="display:flex; gap:12px; align-items:center;">
+						<img src="<%= (p.images&&p.images[0]) || '' %>" alt="<%= p.name %>" style="width:120px;height:90px;object-fit:cover" onerror="this.src='https://picsum.photos/seed/'+encodeURIComponent('<%= p.id %>')+'/300/200'"/>
+						<div style="flex:1;">
+							<h3><a href="/product/<%= p.id %>"><%= p.name %></a></h3>
+							<p class="muted">₹ <%= p.price.toLocaleString('en-IN') %></p>
+							<div style="display:flex; gap:8px; align-items:center;">
+								<input type="number" min="1" value="<%= ci.qty %>" style="width:80px;padding:8px;border-radius:8px;border:1px solid #ddd" onchange="postJSON('/cart/update',{productId:'<%= p.id %>', qty:this.value}).then(()=>location.reload())"/>
+								<button onclick="postJSON('/cart/remove',{productId:'<%= p.id %>'}).then(()=>location.reload())">Remove</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% }) %>
+	</div>
+	<div style="text-align:right; margin-top:16px;">
+		<h3>Subtotal: ₹ <%= subtotal.toLocaleString('en-IN') %></h3>
+		<p class="muted">Tailoring and delivery calculated after measurements.</p>
+		<button class="pill" onclick="alert('Thank you! A tailor will contact you for measurements.')">Proceed</button>
+	</div>
+<% } %>
