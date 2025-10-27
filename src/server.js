@@ -50,7 +50,7 @@ function productsByCategory(categoryId) {
 app.get('/', (req, res) => {
 	const featuredCategories = catalog.categories;
 	const featuredProducts = catalog.products.slice(0, 6);
-	res.render('pages/home', {
+	res.render('home', {
 		title: 'Home',
 		session: req.session,
 		featuredCategories,
@@ -59,7 +59,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/categories', (req, res) => {
-	res.render('pages/categories', {
+	res.render('categories', {
 		title: 'Categories',
 		session: req.session,
 		categories: catalog.categories,
@@ -68,9 +68,9 @@ app.get('/categories', (req, res) => {
 
 app.get('/category/:id', (req, res) => {
 	const category = catalog.categories.find(c => c.id === req.params.id);
-	if (!category) return res.status(404).render('pages/404', { title: 'Not found', session: req.session });
+	if (!category) return res.status(404).render('404', { title: 'Not found', session: req.session });
 	const items = productsByCategory(category.id);
-	res.render('pages/category', {
+	res.render('category', {
 		title: category.name,
 		session: req.session,
 		category,
@@ -80,15 +80,15 @@ app.get('/category/:id', (req, res) => {
 
 app.get('/product/:id', (req, res) => {
 	const product = findProduct(req.params.id);
-	if (!product) return res.status(404).render('pages/404', { title: 'Not found', session: req.session });
-	res.render('pages/product', { title: product.name, session: req.session, product });
+	if (!product) return res.status(404).render('404', { title: 'Not found', session: req.session });
+	res.render('product', { title: product.name, session: req.session, product });
 });
 
 // Cart
 app.get('/cart', (req, res) => {
 	const cartItems = req.session.cart.map(ci => ({ ...ci, product: findProduct(ci.productId) }));
 	const subtotal = cartItems.reduce((sum, ci) => sum + (ci.product?.price || 0) * ci.qty, 0);
-	res.render('pages/cart', { title: 'Your Cart', session: req.session, cartItems, subtotal });
+	res.render('cart', { title: 'Your Cart', session: req.session, cartItems, subtotal });
 });
 
 app.post('/cart/add', (req, res) => {
@@ -117,7 +117,7 @@ app.post('/cart/remove', (req, res) => {
 // Watchlist
 app.get('/watchlist', (req, res) => {
 	const items = req.session.watchlist.map(pid => findProduct(pid)).filter(Boolean);
-	res.render('pages/watchlist', { title: 'Your Watchlist', session: req.session, items });
+	res.render('watchlist', { title: 'Your Watchlist', session: req.session, items });
 });
 
 app.post('/watchlist/toggle', (req, res) => {
@@ -134,7 +134,7 @@ app.post('/watchlist/toggle', (req, res) => {
 
 // 404
 app.use((_req, res) => {
-	res.status(404).render('pages/404', { title: 'Not found', session: {} });
+	res.status(404).render('404', { title: 'Not found', session: {} });
 });
 
 const PORT = process.env.PORT || 3000;
