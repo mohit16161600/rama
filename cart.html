@@ -12,23 +12,24 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="static/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="index.html" class="brand">Rama Store</a>
-                <div class="nav-links">
+                <a href="index.html" class="brand">🌸 Rama Store</a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                <div class="nav-links" id="navLinks">
                     <a href="index.html">Home</a>
                     <a href="categories.html">Categories</a>
                     <a href="index.html#about">About Rama Store</a>
                     <a href="index.html#contact">Contact</a>
                 </div>
                 <div class="nav-actions">
-                    <a href="watchlist.html" class="pill">❤ Watchlist (<span id="watchlist-count">0</span>)</a>
-                    <a href="cart.html" class="pill">🛒 Cart (<span id="cart-count">0</span>)</a>
+                    <a href="watchlist.html" class="pill">💖 Watchlist (<span id="watchlist-count">0</span>)</a>
+                    <a href="cart.html" class="pill">🛍️ Cart (<span id="cart-count">0</span>)</a>
                 </div>
             </nav>
         </div>
@@ -39,28 +40,28 @@
         <!-- Breadcrumb -->
         <div class="container">
             <nav class="breadcrumb">
-                <a href="index.html">Rama Store Home</a> > Your Rama Store Cart
+                <a href="index.html">🌸 Rama Store Home</a> > Your Rama Store Cart
             </nav>
         </div>
 
         <!-- Cart Section -->
         <section class="container">
-            <h1>Your Rama Store Cart</h1>
+            <h1>🛍️ Your Rama Store Cart 🛍️</h1>
             <div id="cart-content">
                 <!-- Cart items will be loaded here -->
             </div>
             <div id="empty-cart" style="display:none; text-align:center; padding:3rem;">
-                <h3>Your Rama Store cart is empty</h3>
+                <h3>🌸 Your Rama Store cart is empty 🌸</h3>
                 <p class="muted mb-3">Discover our premium collection of Indian dresses</p>
-                <a href="categories.html" class="btn btn-primary">Shop Rama Store Collection</a>
+                <a href="categories.html" class="btn btn-primary">🌸 Shop Rama Store Collection</a>
             </div>
             <div id="cart-summary" style="text-align:right; margin-top:2rem; display:none;">
-                <div style="background:var(--white); padding:2rem; border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,0.1);">
-                    <h3>Rama Store Order Summary</h3>
+                <div style="background:var(--white); padding:2rem; border-radius:15px; box-shadow:0 10px 30px var(--shadow);">
+                    <h3>✨ Rama Store Order Summary ✨</h3>
                     <p style="font-size:1.2rem; margin:1rem 0;">Subtotal: ₹ <span id="subtotal">0</span></p>
                     <p class="muted">Tailoring and delivery calculated after measurements</p>
                     <p class="muted">Rama Store quality guarantee included</p>
-                    <button class="btn btn-primary" onclick="alert('Thank you for choosing Rama Store! A tailor will contact you for measurements.')" style="margin-top:1rem; padding:1rem 2rem; font-size:1.1rem;">Proceed with Rama Store</button>
+                    <button class="btn btn-primary" onclick="alert('✨ Thank you for choosing Rama Store! A tailor will contact you for measurements. ✨')" style="margin-top:1rem; padding:1rem 2rem; font-size:1.1rem;">🌸 Proceed with Rama Store</button>
                 </div>
             </div>
         </section>
@@ -71,7 +72,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Rama Store</h4>
+                    <h4>🌸 Rama Store</h4>
                     <p>Premium tailored Indian dresses crafted with love and precision. Rama Store brings you the finest collection of traditional wear.</p>
                 </div>
                 <div class="footer-section">
@@ -88,8 +89,8 @@
                 </div>
                 <div class="footer-section">
                     <h4>Contact Rama Store</h4>
-                    <p>Email: info@ramastore.com</p>
-                    <p>Phone: +91-XXXX-XXXX</p>
+                    <p>📧 Email: info@ramastore.com</p>
+                    <p>📞 Phone: +91-XXXX-XXXX</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -100,6 +101,11 @@
     
     <!-- JavaScript -->
     <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
         const products = {
             'lehenga-rose-gold': { name: 'Rama Store Rose Gold Zari Lehenga', price: 29999 },
             'blouse-kundan': { name: 'Rama Store Kundan Work Blouse', price: 4999 },
@@ -143,12 +149,12 @@
                         html += `
                             <article class="card">
                                 <div class="card-body">
-                                    <div style="display:flex; gap:1.5rem; align-items:center;">
+                                    <div style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;">
                                         <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=300&auto=format&fit=crop" alt="${product.name}" style="width:150px;height:120px;object-fit:cover; border-radius:10px" />
-                                        <div style="flex:1;">
+                                        <div style="flex:1; min-width:200px;">
                                             <h3><a href="product-${item.productId}.html">${product.name}</a></h3>
                                             <p class="price">₹ ${product.price.toLocaleString('en-IN')}</p>
-                                            <div style="display:flex; gap:1rem; align-items:center; margin-top:1rem;">
+                                            <div style="display:flex; gap:1rem; align-items:center; margin-top:1rem; flex-wrap:wrap;">
                                                 <label style="font-weight:600;">Qty:</label>
                                                 <input type="number" min="1" value="${item.qty}" style="width:80px;padding:0.5rem;border-radius:8px;border:2px solid var(--border)" onchange="updateQuantity('${item.productId}', this.value)" />
                                                 <button class="btn btn-secondary" onclick="removeFromCart('${item.productId}')">Remove</button>

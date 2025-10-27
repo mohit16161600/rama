@@ -10,33 +10,26 @@
     <meta name="keywords" content="Rama Store lehenga, premium lehenga, tailored lehenga, Rama Store lehenga collection, Indian lehenga, wedding lehenga, Rama Store bridal wear">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Rama Store Lehengas - Premium Collection">
-    <meta property="og:description" content="Discover Rama Store's exquisite lehenga collection. Each lehenga is handcrafted and tailored to perfection for your special moments.">
-    <meta property="og:type" content="website">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://your-domain.com/category-lehenga.html">
-    
     <!-- Stylesheets -->
     <link rel="stylesheet" href="static/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="index.html" class="brand">Rama Store</a>
-                <div class="nav-links">
+                <a href="index.html" class="brand">🌸 Rama Store</a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                <div class="nav-links" id="navLinks">
                     <a href="index.html">Home</a>
                     <a href="categories.html">Categories</a>
                     <a href="index.html#about">About Rama Store</a>
                     <a href="index.html#contact">Contact</a>
                 </div>
                 <div class="nav-actions">
-                    <a href="watchlist.html" class="pill">❤ Watchlist (<span id="watchlist-count">0</span>)</a>
-                    <a href="cart.html" class="pill">🛒 Cart (<span id="cart-count">0</span>)</a>
+                    <a href="watchlist.html" class="pill">💖 Watchlist (<span id="watchlist-count">0</span>)</a>
+                    <a href="cart.html" class="pill">🛍️ Cart (<span id="cart-count">0</span>)</a>
                 </div>
             </nav>
         </div>
@@ -47,13 +40,13 @@
         <!-- Breadcrumb -->
         <div class="container">
             <nav class="breadcrumb">
-                <a href="index.html">Rama Store Home</a> > <a href="categories.html">Categories</a> > Rama Store Lehengas
+                <a href="index.html">🌸 Rama Store Home</a> > <a href="categories.html">Categories</a> > Rama Store Lehengas
             </nav>
         </div>
 
         <!-- Category Header -->
         <section class="container">
-            <h1>Rama Store Lehengas</h1>
+            <h1>👗 Rama Store Lehengas 👗</h1>
             <p class="text-center muted mb-4">Discover our exquisite collection of handcrafted lehengas. Each Rama Store lehenga is meticulously tailored to your measurements, combining traditional craftsmanship with contemporary elegance.</p>
         </section>
 
@@ -63,12 +56,12 @@
                 <article class="card">
                     <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=600&auto=format&fit=crop" alt="Rama Store Rose Gold Zari Lehenga" loading="lazy">
                     <div class="card-body">
-                        <h3><a href="product-lehenga-rose-gold.html">Rama Store Rose Gold Zari Lehenga</a></h3>
+                        <h3><a href="product-lehenga-rose-gold.html">👗 Rama Store Rose Gold Zari Lehenga</a></h3>
                         <p class="price">₹ 29,999</p>
                         <p class="muted">Intricate zari work with organza dupatta. This Rama Store lehenga features traditional embroidery techniques and is tailored to your exact measurements.</p>
                         <div class="card-actions">
-                            <button class="btn btn-primary" onclick="addToCart('lehenga-rose-gold', 1)">Add to Cart</button>
-                            <button class="btn btn-secondary" onclick="toggleWatchlist('lehenga-rose-gold')">❤ Watchlist</button>
+                            <button class="btn btn-primary" onclick="addToCart('lehenga-rose-gold', 1)">🛍️ Add to Cart</button>
+                            <button class="btn btn-secondary" onclick="toggleWatchlist('lehenga-rose-gold')">💖 Watchlist</button>
                         </div>
                     </div>
                 </article>
@@ -76,12 +69,12 @@
                 <article class="card">
                     <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=600&auto=format&fit=crop" alt="Rama Store Royal Blue Lehenga" loading="lazy">
                     <div class="card-body">
-                        <h3><a href="#">Rama Store Royal Blue Lehenga</a></h3>
+                        <h3><a href="#">👗 Rama Store Royal Blue Lehenga</a></h3>
                         <p class="price">₹ 24,999</p>
                         <p class="muted">Elegant royal blue lehenga with intricate mirror work. This Rama Store creation is perfect for festive occasions and celebrations.</p>
                         <div class="card-actions">
-                            <button class="btn btn-primary" onclick="addToCart('lehenga-royal-blue', 1)">Add to Cart</button>
-                            <button class="btn btn-secondary" onclick="toggleWatchlist('lehenga-royal-blue')">❤ Watchlist</button>
+                            <button class="btn btn-primary" onclick="addToCart('lehenga-royal-blue', 1)">🛍️ Add to Cart</button>
+                            <button class="btn btn-secondary" onclick="toggleWatchlist('lehenga-royal-blue')">💖 Watchlist</button>
                         </div>
                     </div>
                 </article>
@@ -89,12 +82,12 @@
                 <article class="card">
                     <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=600&auto=format&fit=crop" alt="Rama Store Maroon Silk Lehenga" loading="lazy">
                     <div class="card-body">
-                        <h3><a href="#">Rama Store Maroon Silk Lehenga</a></h3>
+                        <h3><a href="#">👗 Rama Store Maroon Silk Lehenga</a></h3>
                         <p class="price">₹ 32,999</p>
                         <p class="muted">Luxurious maroon silk lehenga with gold thread work. This Rama Store lehenga embodies timeless elegance and sophistication.</p>
                         <div class="card-actions">
-                            <button class="btn btn-primary" onclick="addToCart('lehenga-maroon-silk', 1)">Add to Cart</button>
-                            <button class="btn btn-secondary" onclick="toggleWatchlist('lehenga-maroon-silk')">❤ Watchlist</button>
+                            <button class="btn btn-primary" onclick="addToCart('lehenga-maroon-silk', 1)">🛍️ Add to Cart</button>
+                            <button class="btn btn-secondary" onclick="toggleWatchlist('lehenga-maroon-silk')">💖 Watchlist</button>
                         </div>
                     </div>
                 </article>
@@ -102,19 +95,19 @@
         </section>
 
         <!-- Rama Store Lehenga Features -->
-        <section class="container" style="margin: 4rem 0; padding: 3rem; background: var(--white); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-            <h2>Why Choose Rama Store Lehengas?</h2>
+        <section class="container" style="margin: 4rem 0; padding: 3rem; background: var(--white); border-radius: 20px; box-shadow: 0 10px 30px var(--shadow);">
+            <h2>✨ Why Choose Rama Store Lehengas? ✨</h2>
             <div class="grid">
                 <div class="text-center">
-                    <h4>Custom Tailoring</h4>
+                    <h4>🌸 Custom Tailoring</h4>
                     <p>Every Rama Store lehenga is tailored to your exact measurements for the perfect fit.</p>
                 </div>
                 <div class="text-center">
-                    <h4>Premium Fabrics</h4>
+                    <h4>🌸 Premium Fabrics</h4>
                     <p>Rama Store uses only the finest silk, organza, and georgette fabrics for our lehengas.</p>
                 </div>
                 <div class="text-center">
-                    <h4>Handcrafted Details</h4>
+                    <h4>🌸 Handcrafted Details</h4>
                     <p>Intricate embroidery and zari work make each Rama Store lehenga a work of art.</p>
                 </div>
             </div>
@@ -126,7 +119,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Rama Store</h4>
+                    <h4>🌸 Rama Store</h4>
                     <p>Premium tailored Indian dresses crafted with love and precision. Rama Store brings you the finest collection of traditional wear.</p>
                 </div>
                 <div class="footer-section">
@@ -143,8 +136,8 @@
                 </div>
                 <div class="footer-section">
                     <h4>Contact Rama Store</h4>
-                    <p>Email: info@ramastore.com</p>
-                    <p>Phone: +91-XXXX-XXXX</p>
+                    <p>📧 Email: info@ramastore.com</p>
+                    <p>📞 Phone: +91-XXXX-XXXX</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -155,6 +148,11 @@
     
     <!-- JavaScript -->
     <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
         const products = {
             'lehenga-rose-gold': { name: 'Rama Store Rose Gold Zari Lehenga', price: 29999 },
             'lehenga-royal-blue': { name: 'Rama Store Royal Blue Lehenga', price: 24999 },
@@ -175,13 +173,13 @@
             if (existing) { existing.qty += qty; } else { cart.push({ productId, qty }); }
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCounts();
-            alert('Added to Rama Store cart!');
+            alert('✨ Added to Rama Store cart! ✨');
         }
         function toggleWatchlist(productId) {
             const watchlist = getWatchlist();
             const index = watchlist.indexOf(productId);
-            if (index > -1) { watchlist.splice(index, 1); alert('Removed from Rama Store watchlist'); }
-            else { watchlist.push(productId); alert('Added to Rama Store watchlist'); }
+            if (index > -1) { watchlist.splice(index, 1); alert('💔 Removed from Rama Store watchlist'); }
+            else { watchlist.push(productId); alert('💖 Added to Rama Store watchlist'); }
             localStorage.setItem('watchlist', JSON.stringify(watchlist));
             updateCounts();
         }

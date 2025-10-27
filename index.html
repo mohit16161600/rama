@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="static/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -70,16 +70,17 @@
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="index.html" class="brand">Rama Store</a>
-                <div class="nav-links">
+                <a href="index.html" class="brand">🌸 Rama Store</a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                <div class="nav-links" id="navLinks">
                     <a href="index.html">Home</a>
                     <a href="categories.html">Categories</a>
                     <a href="#about">About Rama Store</a>
                     <a href="#contact">Contact</a>
                 </div>
                 <div class="nav-actions">
-                    <a href="watchlist.html" class="pill">❤ Watchlist (<span id="watchlist-count">0</span>)</a>
-                    <a href="cart.html" class="pill">🛒 Cart (<span id="cart-count">0</span>)</a>
+                    <a href="watchlist.html" class="pill">💖 Watchlist (<span id="watchlist-count">0</span>)</a>
+                    <a href="cart.html" class="pill">🛍️ Cart (<span id="cart-count">0</span>)</a>
                 </div>
             </nav>
         </div>
@@ -92,9 +93,9 @@
             <div class="container">
                 <div class="hero-content">
                     <div class="hero-text">
-                        <h1>Premium Tailored Indian Dresses by Rama Store</h1>
+                        <h1>✨ Premium Tailored Indian Dresses by Rama Store ✨</h1>
                         <p>Discover the finest collection of handcrafted Indian dresses at Rama Store. From elegant lehengas to sophisticated saree blouses, each piece is tailored to perfection for your special occasions.</p>
-                        <a href="categories.html" class="pill">Explore Rama Store Collection</a>
+                        <a href="categories.html" class="pill">🌸 Explore Rama Store Collection</a>
                     </div>
                     <div class="hero-image">
                         <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=800&auto=format&fit=crop" alt="Rama Store Premium Indian Dresses Collection" loading="eager">
@@ -105,15 +106,15 @@
 
         <!-- Categories Section -->
         <section class="container">
-            <h2>Rama Store Categories</h2>
+            <h2>🌸 Rama Store Categories 🌸</h2>
             <div class="grid">
                 <article class="card">
                     <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=600&auto=format&fit=crop" alt="Rama Store Lehenga Collection" loading="lazy">
                     <div class="card-body">
-                        <h3><a href="category-lehenga.html">Rama Store Lehengas</a></h3>
+                        <h3><a href="category-lehenga.html">👗 Rama Store Lehengas</a></h3>
                         <p class="muted">Handcrafted lehengas tailored to your measurements. Each Rama Store lehenga is designed with precision and elegance.</p>
                         <div class="card-actions">
-                            <a href="category-lehenga.html" class="btn btn-primary">Shop Rama Store Lehengas</a>
+                            <a href="category-lehenga.html" class="btn btn-primary">🌸 Shop Rama Store Lehengas</a>
                         </div>
                     </div>
                 </article>
@@ -121,10 +122,10 @@
                 <article class="card">
                     <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=600&auto=format&fit=crop" alt="Rama Store Saree Blouses Collection" loading="lazy">
                     <div class="card-body">
-                        <h3><a href="category-saree.html">Rama Store Saree Blouses</a></h3>
+                        <h3><a href="category-saree.html">👚 Rama Store Saree Blouses</a></h3>
                         <p class="muted">Bespoke saree blouses that fit like a dream. Rama Store's saree blouses combine traditional craftsmanship with modern comfort.</p>
                         <div class="card-actions">
-                            <a href="category-saree.html" class="btn btn-primary">Shop Rama Store Blouses</a>
+                            <a href="category-saree.html" class="btn btn-primary">🌸 Shop Rama Store Blouses</a>
                         </div>
                     </div>
                 </article>
@@ -132,10 +133,10 @@
                 <article class="card">
                     <img src="https://images.unsplash.com/photo-1594736797933-d0c2b4b0b8a8?q=80&w=600&auto=format&fit=crop" alt="Rama Store Salwar Suits Collection" loading="lazy">
                     <div class="card-body">
-                        <h3><a href="category-salwar.html">Rama Store Salwar Suits</a></h3>
+                        <h3><a href="category-salwar.html">👘 Rama Store Salwar Suits</a></h3>
                         <p class="muted">Churidars, Anarkalis, and more, cut to perfection. Rama Store's salwar suits offer comfort and style for every occasion.</p>
                         <div class="card-actions">
-                            <a href="category-salwar.html" class="btn btn-primary">Shop Rama Store Salwars</a>
+                            <a href="category-salwar.html" class="btn btn-primary">🌸 Shop Rama Store Salwars</a>
                         </div>
                     </div>
                 </article>
@@ -144,17 +145,17 @@
 
         <!-- Featured Products Section -->
         <section class="container">
-            <h2>Rama Store Featured Collection</h2>
+            <h2>✨ Rama Store Featured Collection ✨</h2>
             <div class="grid">
                 <article class="card">
                     <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=600&auto=format&fit=crop" alt="Rama Store Rose Gold Zari Lehenga" loading="lazy">
                     <div class="card-body">
-                        <h3><a href="product-lehenga-rose-gold.html">Rama Store Rose Gold Zari Lehenga</a></h3>
+                        <h3><a href="product-lehenga-rose-gold.html">👗 Rama Store Rose Gold Zari Lehenga</a></h3>
                         <p class="price">₹ 29,999</p>
                         <p class="muted">Intricate zari work with organza dupatta. This Rama Store lehenga is tailored to your exact measurements.</p>
                         <div class="card-actions">
-                            <button class="btn btn-primary" onclick="addToCart('lehenga-rose-gold', 1)">Add to Cart</button>
-                            <button class="btn btn-secondary" onclick="toggleWatchlist('lehenga-rose-gold')">❤ Watchlist</button>
+                            <button class="btn btn-primary" onclick="addToCart('lehenga-rose-gold', 1)">🛍️ Add to Cart</button>
+                            <button class="btn btn-secondary" onclick="toggleWatchlist('lehenga-rose-gold')">💖 Watchlist</button>
                         </div>
                     </div>
                 </article>
@@ -162,12 +163,12 @@
                 <article class="card">
                     <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=600&auto=format&fit=crop" alt="Rama Store Kundan Work Blouse" loading="lazy">
                     <div class="card-body">
-                        <h3><a href="product-blouse-kundan.html">Rama Store Kundan Work Blouse</a></h3>
+                        <h3><a href="product-blouse-kundan.html">👚 Rama Store Kundan Work Blouse</a></h3>
                         <p class="price">₹ 4,999</p>
                         <p class="muted">Statement kundan accents with secure lining. This Rama Store blouse combines traditional craftsmanship with modern comfort.</p>
                         <div class="card-actions">
-                            <button class="btn btn-primary" onclick="addToCart('blouse-kundan', 1)">Add to Cart</button>
-                            <button class="btn btn-secondary" onclick="toggleWatchlist('blouse-kundan')">❤ Watchlist</button>
+                            <button class="btn btn-primary" onclick="addToCart('blouse-kundan', 1)">🛍️ Add to Cart</button>
+                            <button class="btn btn-secondary" onclick="toggleWatchlist('blouse-kundan')">💖 Watchlist</button>
                         </div>
                     </div>
                 </article>
@@ -175,12 +176,12 @@
                 <article class="card">
                     <img src="https://images.unsplash.com/photo-1594736797933-d0c2b4b0b8a8?q=80&w=600&auto=format&fit=crop" alt="Rama Store Emerald Anarkali Set" loading="lazy">
                     <div class="card-body">
-                        <h3><a href="product-anarkali-emerald.html">Rama Store Emerald Anarkali Set</a></h3>
+                        <h3><a href="product-anarkali-emerald.html">👘 Rama Store Emerald Anarkali Set</a></h3>
                         <p class="price">₹ 14,999</p>
                         <p class="muted">Flowing silhouette with hand-embroidered yoke. This Rama Store Anarkali set is perfect for special occasions.</p>
                         <div class="card-actions">
-                            <button class="btn btn-primary" onclick="addToCart('anarkali-emerald', 1)">Add to Cart</button>
-                            <button class="btn btn-secondary" onclick="toggleWatchlist('anarkali-emerald')">❤ Watchlist</button>
+                            <button class="btn btn-primary" onclick="addToCart('anarkali-emerald', 1)">🛍️ Add to Cart</button>
+                            <button class="btn btn-secondary" onclick="toggleWatchlist('anarkali-emerald')">💖 Watchlist</button>
                         </div>
                     </div>
                 </article>
@@ -188,8 +189,8 @@
         </section>
 
         <!-- About Rama Store Section -->
-        <section id="about" class="container" style="margin: 4rem 0; padding: 3rem; background: var(--white); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-            <h2>About Rama Store</h2>
+        <section id="about" class="container" style="margin: 4rem 0; padding: 3rem; background: var(--white); border-radius: 20px; box-shadow: 0 10px 30px var(--shadow);">
+            <h2>🌸 About Rama Store 🌸</h2>
             <p>Rama Store has been crafting premium Indian dresses for over a decade, combining traditional techniques with modern design sensibilities. Each Rama Store creation is meticulously tailored to ensure the perfect fit and exceptional quality.</p>
             <p>Our Rama Store collection features handpicked fabrics, intricate embroidery, and attention to detail that sets us apart in the world of Indian fashion. From wedding lehengas to everyday salwar suits, Rama Store offers something special for every occasion.</p>
         </section>
@@ -200,7 +201,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Rama Store</h4>
+                    <h4>🌸 Rama Store</h4>
                     <p>Premium tailored Indian dresses crafted with love and precision. Rama Store brings you the finest collection of traditional wear.</p>
                 </div>
                 <div class="footer-section">
@@ -218,8 +219,8 @@
                 </div>
                 <div class="footer-section">
                     <h4>Contact Rama Store</h4>
-                    <p>Email: info@ramastore.com</p>
-                    <p>Phone: +91-XXXX-XXXX</p>
+                    <p>📧 Email: info@ramastore.com</p>
+                    <p>📞 Phone: +91-XXXX-XXXX</p>
                     <p>Follow Rama Store on social media</p>
                 </div>
             </div>
@@ -231,6 +232,12 @@
     
     <!-- JavaScript -->
     <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
         // Product data
         const products = {
             'lehenga-rose-gold': { name: 'Rama Store Rose Gold Zari Lehenga', price: 29999 },
@@ -264,7 +271,7 @@
             }
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCounts();
-            alert('Added to Rama Store cart!');
+            alert('✨ Added to Rama Store cart! ✨');
         }
 
         function toggleWatchlist(productId) {
@@ -272,10 +279,10 @@
             const index = watchlist.indexOf(productId);
             if (index > -1) {
                 watchlist.splice(index, 1);
-                alert('Removed from Rama Store watchlist');
+                alert('💔 Removed from Rama Store watchlist');
             } else {
                 watchlist.push(productId);
-                alert('Added to Rama Store watchlist');
+                alert('💖 Added to Rama Store watchlist');
             }
             localStorage.setItem('watchlist', JSON.stringify(watchlist));
             updateCounts();

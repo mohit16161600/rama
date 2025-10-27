@@ -12,23 +12,24 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="static/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="index.html" class="brand">Rama Store</a>
-                <div class="nav-links">
+                <a href="index.html" class="brand">🌸 Rama Store</a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                <div class="nav-links" id="navLinks">
                     <a href="index.html">Home</a>
                     <a href="categories.html">Categories</a>
                     <a href="index.html#about">About Rama Store</a>
                     <a href="index.html#contact">Contact</a>
                 </div>
                 <div class="nav-actions">
-                    <a href="watchlist.html" class="pill">❤ Watchlist (<span id="watchlist-count">0</span>)</a>
-                    <a href="cart.html" class="pill">🛒 Cart (<span id="cart-count">0</span>)</a>
+                    <a href="watchlist.html" class="pill">💖 Watchlist (<span id="watchlist-count">0</span>)</a>
+                    <a href="cart.html" class="pill">🛍️ Cart (<span id="cart-count">0</span>)</a>
                 </div>
             </nav>
         </div>
@@ -39,20 +40,20 @@
         <!-- Breadcrumb -->
         <div class="container">
             <nav class="breadcrumb">
-                <a href="index.html">Rama Store Home</a> > Your Rama Store Watchlist
+                <a href="index.html">🌸 Rama Store Home</a> > Your Rama Store Watchlist
             </nav>
         </div>
 
         <!-- Watchlist Section -->
         <section class="container">
-            <h1>Your Rama Store Watchlist</h1>
+            <h1>💖 Your Rama Store Watchlist 💖</h1>
             <div id="watchlist-content">
                 <!-- Watchlist items will be loaded here -->
             </div>
             <div id="empty-watchlist" style="display:none; text-align:center; padding:3rem;">
-                <h3>Your Rama Store watchlist is empty</h3>
+                <h3>🌸 Your Rama Store watchlist is empty 🌸</h3>
                 <p class="muted mb-3">Save your favorite Indian dresses for later</p>
-                <a href="categories.html" class="btn btn-primary">Explore Rama Store Collection</a>
+                <a href="categories.html" class="btn btn-primary">🌸 Explore Rama Store Collection</a>
             </div>
         </section>
     </main>
@@ -62,7 +63,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Rama Store</h4>
+                    <h4>🌸 Rama Store</h4>
                     <p>Premium tailored Indian dresses crafted with love and precision. Rama Store brings you the finest collection of traditional wear.</p>
                 </div>
                 <div class="footer-section">
@@ -79,8 +80,8 @@
                 </div>
                 <div class="footer-section">
                     <h4>Contact Rama Store</h4>
-                    <p>Email: info@ramastore.com</p>
-                    <p>Phone: +91-XXXX-XXXX</p>
+                    <p>📧 Email: info@ramastore.com</p>
+                    <p>📞 Phone: +91-XXXX-XXXX</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -91,6 +92,11 @@
     
     <!-- JavaScript -->
     <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
         const products = {
             'lehenga-rose-gold': { name: 'Rama Store Rose Gold Zari Lehenga', price: 29999 },
             'blouse-kundan': { name: 'Rama Store Kundan Work Blouse', price: 4999 },
@@ -133,8 +139,8 @@
                                     <h3><a href="product-${productId}.html">${product.name}</a></h3>
                                     <p class="price">₹ ${product.price.toLocaleString('en-IN')}</p>
                                     <div class="card-actions">
-                                        <button class="btn btn-primary" onclick="addToCart('${productId}', 1); location.href='cart.html'">Add to Cart</button>
-                                        <button class="btn btn-secondary" onclick="removeFromWatchlist('${productId}')">Remove ❤</button>
+                                        <button class="btn btn-primary" onclick="addToCart('${productId}', 1); location.href='cart.html'">🛍️ Add to Cart</button>
+                                        <button class="btn btn-secondary" onclick="removeFromWatchlist('${productId}')">💔 Remove</button>
                                     </div>
                                 </div>
                             </article>
