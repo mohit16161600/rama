@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rama Store Cart - Your Shopping Cart</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Your Rama Store shopping cart. Review your selected Indian dresses including lehengas, saree blouses, and salwar suits. Complete your Rama Store purchase.">
+    <meta name="keywords" content="Rama Store cart, shopping cart, Rama Store purchase, Indian dress cart, lehenga cart, saree cart">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="brand">Rama Store</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="index.html#about">About Rama Store</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="watchlist.html" class="pill">❤ Watchlist (<span id="watchlist-count">0</span>)</a>
+                    <a href="cart.html" class="pill">🛒 Cart (<span id="cart-count">0</span>)</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Breadcrumb -->
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Rama Store Home</a> > Your Rama Store Cart
+            </nav>
+        </div>
+
+        <!-- Cart Section -->
+        <section class="container">
+            <h1>Your Rama Store Cart</h1>
+            <div id="cart-content">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <div id="empty-cart" style="display:none; text-align:center; padding:3rem;">
+                <h3>Your Rama Store cart is empty</h3>
+                <p class="muted mb-3">Discover our premium collection of Indian dresses</p>
+                <a href="categories.html" class="btn btn-primary">Shop Rama Store Collection</a>
+            </div>
+            <div id="cart-summary" style="text-align:right; margin-top:2rem; display:none;">
+                <div style="background:var(--white); padding:2rem; border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,0.1);">
+                    <h3>Rama Store Order Summary</h3>
+                    <p style="font-size:1.2rem; margin:1rem 0;">Subtotal: ₹ <span id="subtotal">0</span></p>
+                    <p class="muted">Tailoring and delivery calculated after measurements</p>
+                    <p class="muted">Rama Store quality guarantee included</p>
+                    <button class="btn btn-primary" onclick="alert('Thank you for choosing Rama Store! A tailor will contact you for measurements.')" style="margin-top:1rem; padding:1rem 2rem; font-size:1.1rem;">Proceed with Rama Store</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Rama Store</h4>
+                    <p>Premium tailored Indian dresses crafted with love and precision. Rama Store brings you the finest collection of traditional wear.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Rama Store Categories</h4>
+                    <p><a href="category-lehenga.html">Rama Store Lehengas</a></p>
+                    <p><a href="category-saree.html">Rama Store Saree Blouses</a></p>
+                    <p><a href="category-salwar.html">Rama Store Salwar Suits</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <p><a href="index.html">Rama Store Home</a></p>
+                    <p><a href="categories.html">Rama Store Categories</a></p>
+                    <p><a href="watchlist.html">Rama Store Watchlist</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Rama Store</h4>
+                    <p>Email: info@ramastore.com</p>
+                    <p>Phone: +91-XXXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rama Store. All rights reserved. | Premium Indian Dresses by Rama Store</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        const products = {
+            'lehenga-rose-gold': { name: 'Rama Store Rose Gold Zari Lehenga', price: 29999 },
+            'blouse-kundan': { name: 'Rama Store Kundan Work Blouse', price: 4999 },
+            'anarkali-emerald': { name: 'Rama Store Emerald Anarkali Set', price: 14999 },
+            'lehenga-royal-blue': { name: 'Rama Store Royal Blue Lehenga', price: 24999 },
+            'lehenga-maroon-silk': { name: 'Rama Store Maroon Silk Lehenga', price: 32999 }
+        };
+
+        function getCart() { return JSON.parse(localStorage.getItem('cart') || '[]'); }
+        function getWatchlist() { return JSON.parse(localStorage.getItem('watchlist') || '[]'); }
+        
+        function updateCounts() {
+            const cart = getCart();
+            const watchlist = getWatchlist();
+            document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('watchlist-count').textContent = watchlist.length;
+        }
+
+        function updateCart() {
+            const cart = getCart();
+            const cartContent = document.getElementById('cart-content');
+            const emptyCart = document.getElementById('empty-cart');
+            const cartSummary = document.getElementById('cart-summary');
+            
+            if (cart.length === 0) {
+                cartContent.style.display = 'none';
+                emptyCart.style.display = 'block';
+                cartSummary.style.display = 'none';
+            } else {
+                emptyCart.style.display = 'none';
+                cartContent.style.display = 'block';
+                cartSummary.style.display = 'block';
+                
+                let html = '<div class="grid">';
+                let subtotal = 0;
+                
+                cart.forEach(item => {
+                    const product = products[item.productId];
+                    if (product) {
+                        subtotal += product.price * item.qty;
+                        html += `
+                            <article class="card">
+                                <div class="card-body">
+                                    <div style="display:flex; gap:1.5rem; align-items:center;">
+                                        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=300&auto=format&fit=crop" alt="${product.name}" style="width:150px;height:120px;object-fit:cover; border-radius:10px" />
+                                        <div style="flex:1;">
+                                            <h3><a href="product-${item.productId}.html">${product.name}</a></h3>
+                                            <p class="price">₹ ${product.price.toLocaleString('en-IN')}</p>
+                                            <div style="display:flex; gap:1rem; align-items:center; margin-top:1rem;">
+                                                <label style="font-weight:600;">Qty:</label>
+                                                <input type="number" min="1" value="${item.qty}" style="width:80px;padding:0.5rem;border-radius:8px;border:2px solid var(--border)" onchange="updateQuantity('${item.productId}', this.value)" />
+                                                <button class="btn btn-secondary" onclick="removeFromCart('${item.productId}')">Remove</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        `;
+                    }
+                });
+                
+                html += '</div>';
+                cartContent.innerHTML = html;
+                document.getElementById('subtotal').textContent = subtotal.toLocaleString('en-IN');
+            }
+        }
+
+        function updateQuantity(productId, qty) {
+            const cart = getCart();
+            const quantity = Math.max(0, parseInt(qty));
+            cart.forEach(item => {
+                if (item.productId === productId) {
+                    if (quantity === 0) {
+                        cart.splice(cart.indexOf(item), 1);
+                    } else {
+                        item.qty = quantity;
+                    }
+                }
+            });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+            updateCounts();
+        }
+
+        function removeFromCart(productId) {
+            const cart = getCart();
+            const newCart = cart.filter(item => item.productId !== productId);
+            localStorage.setItem('cart', JSON.stringify(newCart));
+            updateCart();
+            updateCounts();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCounts();
+            updateCart();
+        });
+    </script>
+</body>
+</html>
