@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rama Store - Premium Tailored Indian Dresses | Handcrafted Elegance</title>
-    
+    <!-- tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- SEO Meta Tags -->
     <meta name="description" content="Rama Store offers premium tailored Indian dresses including lehengas, saree blouses, and salwar suits. Handcrafted with precision and elegance. Shop now for custom-fit traditional wear.">
     <meta name="keywords" content="Rama Store, Indian dresses, tailored lehenga, saree blouses, salwar suits, custom Indian wear, traditional dresses, handcrafted fashion, Rama Store lehenga, Rama Store saree">
@@ -70,8 +71,12 @@
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="index.html" class="brand">🌸 Rama Store</a>
-                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                 <!-- for mobile width make full and for laptop make width normal -->
+                <div class="flex items-center justify-between w-full md:w-auto">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpOquFa4zK3k4DkByopq8iWoBDbSaVYyMRTQ&s" alt="Rama Store Logo" class="w-10 h-10 rounded-full">
+                    <a href="index.html" class="brand">🌸 Rama Store</a>
+                    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                </div>
                 <div class="nav-links" id="navLinks">
                     <a href="index.html">Home</a>
                     <a href="categories.html">Categories</a>
@@ -122,16 +127,16 @@
                 <article class="card">
                     <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=600&auto=format&fit=crop" alt="Rama Store Saree Blouses Collection" loading="lazy">
                     <div class="card-body">
-                        <h3><a href="/category-saree.html">👚 Rama Store Saree Blouses</a></h3>
+                        <h3><a href="/category-blouse.html">👚 Rama Store Saree Blouses</a></h3>
                         <p class="muted">Bespoke saree blouses that fit like a dream. Rama Store's saree blouses combine traditional craftsmanship with modern comfort.</p>
                         <div class="card-actions">
-                            <a href="/category-saree.html" class="btn btn-primary">🌸 Shop Rama Store Blouses</a>
+                            <a href="/category-blouse.html" class="btn btn-primary">🌸 Shop Rama Store Blouses</a>
                         </div>
                     </div>
                 </article>
                 
                 <article class="card">
-                    <img src="https://images.unsplash.com/photo-1594736797933-d0c2b4b0b8a8?q=80&w=600&auto=format&fit=crop" alt="Rama Store Salwar Suits Collection" loading="lazy">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpOquFa4zK3k4DkByopq8iWoBDbSaVYyMRTQ&s" alt="Rama Store Salwar Suits Collection" loading="lazy">
                     <div class="card-body">
                         <h3><a href="/category-salwar.html">👘 Rama Store Salwar Suits</a></h3>
                         <p class="muted">Churidars, Anarkalis, and more, cut to perfection. Rama Store's salwar suits offer comfort and style for every occasion.</p>
@@ -174,7 +179,7 @@
                 </article>
                 
                 <article class="card">
-                    <img src="https://images.unsplash.com/photo-1594736797933-d0c2b4b0b8a8?q=80&w=600&auto=format&fit=crop" alt="Rama Store Emerald Anarkali Set" loading="lazy">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu5kyasGfTPL6jQ1fvWqDgNgLXpY411hsrxQ&s" alt="Rama Store Emerald Anarkali Set" loading="lazy">
                     <div class="card-body">
                         <h3><a href="/product-anarkali-emerald.html">👘 Rama Store Emerald Anarkali Set</a></h3>
                         <p class="price">₹ 14,999</p>
@@ -214,7 +219,7 @@
                 <div class="footer-section">
                     <h4>Rama Store Categories</h4>
                     <p><a href="/category-lehenga.html">Rama Store Lehengas</a></p>
-                    <p><a href="/category-saree.html">Rama Store Saree Blouses</a></p>
+                    <p><a href="/category-blouse.html">Rama Store Saree Blouses</a></p>
                     <p><a href="/category-salwar.html">Rama Store Salwar Suits</a></p>
                 </div>
                 <div class="footer-section">
@@ -225,7 +230,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Rama Store. All rights reserved. | Premium Indian Dresses by Rama Store</p>
+                <p>&copy; 2025 Rama Store. All rights reserved. | Premium Indian Dresses by Rama Store</p>
             </div>
         </div>
     </footer>
