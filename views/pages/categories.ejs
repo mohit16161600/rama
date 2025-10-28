@@ -1,4 +1,5 @@
-<h1>Categories</h1>
+<h1>🌸 <%= store.name %> Categories 🌸</h1>
+<p class="text-center muted mb-4">Discover our complete collection of premium Indian dresses, each category carefully curated by <%= store.name %> experts.</p>
 <div class="grid">
 	<% categories.forEach(c => { %>
 		<a class="card" href="/category/<%= c.id %>">
@@ -6,7 +7,28 @@
 			<div class="card-body">
 				<h3><%= c.name %></h3>
 				<p class="muted"><%= c.description %></p>
+				<div class="card-actions">
+					<a href="/category/<%= c.id %>" class="btn btn-primary">🌸 Explore <%= c.name %></a>
+				</div>
 			</div>
 		</a>
 	<% }) %>
 </div>
+
+<section style="margin: 4rem 0; padding: 3rem; background: var(--white); border-radius: 20px; box-shadow: 0 10px 30px var(--shadow);">
+	<h2>✨ Why Choose <%= store.name %>? ✨</h2>
+	<div class="grid">
+		<div class="text-center">
+			<h4>🌸 Premium Quality</h4>
+			<p>Every <%= store.name %> creation uses the finest materials and traditional techniques.</p>
+		</div>
+		<div class="text-center">
+			<h4>🌸 Perfect Fit</h4>
+			<p><%= store.name %> garments are tailored to your exact measurements for ultimate comfort.</p>
+		</div>
+		<div class="text-center">
+			<h4>🌸 Expert Craftsmanship</h4>
+			<p>Our <%= store.name %> artisans bring decades of experience to every piece.</p>
+		</div>
+	</div>
+</section>

@@ -5,24 +5,63 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title><%= (title ? title + ' · ' : '') %><%= store.name %></title>
 		<link rel="stylesheet" href="/css/styles.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<header class="header">
 			<div class="container nav">
-				<a href="/" class="brand"><%= store.name %></a>
-				<a href="/categories">Categories</a>
-				<span class="spacer"></span>
-				<a href="/watchlist" class="pill">Watchlist (<%= (session.watchlist||[]).length %>)</a>
-				<a href="/cart" class="pill">Cart (<%= (session.cart||[]).reduce((n,ci)=>n+ci.qty,0) %>)</a>
+				<a href="/" class="brand">🌸 <%= store.name %></a>
+				<button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+				<div class="nav-links" id="navLinks">
+					<a href="/">Home</a>
+					<a href="/categories">Categories</a>
+					<a href="#about">About <%= store.name %></a>
+					<a href="#contact">Contact</a>
+				</div>
+				<div class="nav-actions">
+					<a href="/watchlist" class="pill">💖 Watchlist (<%= (session.watchlist||[]).length %>)</a>
+					<a href="/cart" class="pill">🛍️ Cart (<%= (session.cart||[]).reduce((n,ci)=>n+ci.qty,0) %>)</a>
+				</div>
 			</div>
 		</header>
 		<main class="container">
 			<%- body %>
 		</main>
 		<footer class="footer container">
-			<div>&copy; <%= new Date().getFullYear() %> <%= store.name %> — <%= store.tagline %></div>
+			<div class="footer-content">
+				<div class="footer-section">
+					<h4>🌸 <%= store.name %></h4>
+					<p>Premium tailored Indian dresses crafted with love and precision. <%= store.name %> brings you the finest collection of traditional wear.</p>
+				</div>
+				<div class="footer-section">
+					<h4>Quick Links</h4>
+					<p><a href="/">Rama Store Home</a></p>
+					<p><a href="/categories">Rama Store Categories</a></p>
+					<p><a href="/cart">Rama Store Cart</a></p>
+					<p><a href="/watchlist">Rama Store Watchlist</a></p>
+				</div>
+				<div class="footer-section">
+					<h4>Rama Store Categories</h4>
+					<p><a href="/category/lehenga">Rama Store Lehengas</a></p>
+					<p><a href="/category/saree">Rama Store Saree Blouses</a></p>
+					<p><a href="/category/salwar">Rama Store Salwar Suits</a></p>
+				</div>
+				<div class="footer-section">
+					<h4>Contact Rama Store</h4>
+					<p>📧 Email: info@ramastore.com</p>
+					<p>📞 Phone: +91-XXXX-XXXX</p>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div>&copy; <%= new Date().getFullYear() %> <%= store.name %> — <%= store.tagline %></div>
+			</div>
 		</footer>
 		<script>
+		function toggleMobileMenu() {
+			const navLinks = document.getElementById('navLinks');
+			navLinks.classList.toggle('active');
+		}
+		
 		async function postJSON(url, data){
 			const r = await fetch(url,{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
 			return r.json();

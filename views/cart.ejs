@@ -5,34 +5,47 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title><%= (title ? title + ' · ' : '') %><%= store.name %></title>
 		<link rel="stylesheet" href="/css/styles.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<header class="header">
 			<div class="container nav">
-				<a href="/" class="brand"><%= store.name %></a>
-				<a href="/categories">Categories</a>
-				<span class="spacer"></span>
-				<a href="/watchlist" class="pill">Watchlist (<%= (session.watchlist||[]).length %>)</a>
-				<a href="/cart" class="pill">Cart (<%= (session.cart||[]).reduce((n,ci)=>n+ci.qty,0) %>)</a>
+				<a href="/" class="brand">🌸 <%= store.name %></a>
+				<button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+				<div class="nav-links" id="navLinks">
+					<a href="/">Home</a>
+					<a href="/categories">Categories</a>
+					<a href="#about">About <%= store.name %></a>
+					<a href="#contact">Contact</a>
+				</div>
+				<div class="nav-actions">
+					<a href="/watchlist" class="pill">💖 Watchlist (<%= (session.watchlist||[]).length %>)</a>
+					<a href="/cart" class="pill">🛍️ Cart (<%= (session.cart||[]).reduce((n,ci)=>n+ci.qty,0) %>)</a>
+				</div>
 			</div>
 		</header>
 		<main class="container">
-			<h1>Your Cart</h1>
+			<h1>🛍️ Your <%= store.name %> Cart 🛍️</h1>
 <% if (cartItems.length === 0) { %>
-	<p class="muted">Your cart is empty.</p>
+	<div style="text-align:center; padding:3rem;">
+		<h3>🌸 Your <%= store.name %> cart is empty 🌸</h3>
+		<p class="muted mb-3">Discover our premium collection of Indian dresses</p>
+		<a href="/categories" class="btn btn-primary">🌸 Shop <%= store.name %> Collection</a>
+	</div>
 <% } else { %>
 	<div class="grid">
 		<% cartItems.forEach(ci => { const p = ci.product; if (!p) return; %>
 			<div class="card">
 				<div class="card-body">
-					<div style="display:flex; gap:12px; align-items:center;">
-						<img src="<%= (p.images&&p.images[0]) || '' %>" alt="<%= p.name %>" style="width:120px;height:90px;object-fit:cover" onerror="this.src='https://picsum.photos/seed/'+encodeURIComponent('<%= p.id %>')+'/300/200'"/>
-						<div style="flex:1;">
+					<div style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;">
+						<img src="<%= (p.images&&p.images[0]) || '' %>" alt="<%= p.name %>" style="width:150px;height:120px;object-fit:cover; border-radius:10px" onerror="this.src='https://picsum.photos/seed/'+encodeURIComponent('<%= p.id %>')+'/300/200'"/>
+						<div style="flex:1; min-width:200px;">
 							<h3><a href="/product/<%= p.id %>"><%= p.name %></a></h3>
-							<p class="muted">₹ <%= p.price.toLocaleString('en-IN') %></p>
-							<div style="display:flex; gap:8px; align-items:center;">
-								<input type="number" min="1" value="<%= ci.qty %>" style="width:80px;padding:8px;border-radius:8px;border:1px solid #ddd" onchange="postJSON('/cart/update',{productId:'<%= p.id %>', qty:this.value}).then(()=>location.reload())"/>
-								<button onclick="postJSON('/cart/remove',{productId:'<%= p.id %>'}).then(()=>location.reload())">Remove</button>
+							<p class="price">₹ <%= p.price.toLocaleString('en-IN') %></p>
+							<div style="display:flex; gap:1rem; align-items:center; margin-top:1rem; flex-wrap:wrap;">
+								<label style="font-weight:600;">Qty:</label>
+								<input type="number" min="1" value="<%= ci.qty %>" style="width:80px;padding:0.5rem;border-radius:8px;border:2px solid var(--border)" onchange="postJSON('/cart/update',{productId:'<%= p.id %>', qty:this.value}).then(()=>location.reload())"/>
+								<button class="btn btn-secondary" onclick="postJSON('/cart/remove',{productId:'<%= p.id %>'}).then(()=>location.reload())">Remove</button>
 							</div>
 						</div>
 					</div>
@@ -40,18 +53,52 @@
 			</div>
 		<% }) %>
 	</div>
-	<div style="text-align:right; margin-top:16px;">
-		<h3>Subtotal: ₹ <%= subtotal.toLocaleString('en-IN') %></h3>
-		<p class="muted">Tailoring and delivery calculated after measurements.</p>
-		<button class="pill" onclick="alert('Thank you! A tailor will contact you for measurements.')">Proceed</button>
+	<div style="text-align:right; margin-top:2rem;">
+		<div style="background:var(--white); padding:2rem; border-radius:15px; box-shadow:0 10px 30px var(--shadow);">
+			<h3>✨ <%= store.name %> Order Summary ✨</h3>
+			<p style="font-size:1.2rem; margin:1rem 0;">Subtotal: ₹ <%= subtotal.toLocaleString('en-IN') %></p>
+			<p class="muted">Tailoring and delivery calculated after measurements</p>
+			<p class="muted"><%= store.name %> quality guarantee included</p>
+			<button class="btn btn-primary" onclick="alert('✨ Thank you for choosing <%= store.name %>! A tailor will contact you for measurements. ✨')" style="margin-top:1rem; padding:1rem 2rem; font-size:1.1rem;">🌸 Proceed with <%= store.name %></button>
+		</div>
 	</div>
 <% } %>
-
 		</main>
 		<footer class="footer container">
-			<div>&copy; <%= new Date().getFullYear() %> <%= store.name %> — <%= store.tagline %></div>
+			<div class="footer-content">
+				<div class="footer-section">
+					<h4>🌸 <%= store.name %></h4>
+					<p>Premium tailored Indian dresses crafted with love and precision. <%= store.name %> brings you the finest collection of traditional wear.</p>
+				</div>
+				<div class="footer-section">
+					<h4>Quick Links</h4>
+					<p><a href="/">Rama Store Home</a></p>
+					<p><a href="/categories">Rama Store Categories</a></p>
+					<p><a href="/cart">Rama Store Cart</a></p>
+					<p><a href="/watchlist">Rama Store Watchlist</a></p>
+				</div>
+				<div class="footer-section">
+					<h4>Rama Store Categories</h4>
+					<p><a href="/category/lehenga">Rama Store Lehengas</a></p>
+					<p><a href="/category/saree">Rama Store Saree Blouses</a></p>
+					<p><a href="/category/salwar">Rama Store Salwar Suits</a></p>
+				</div>
+				<div class="footer-section">
+					<h4>Contact Rama Store</h4>
+					<p>📧 Email: info@ramastore.com</p>
+					<p>📞 Phone: +91-XXXX-XXXX</p>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div>&copy; <%= new Date().getFullYear() %> <%= store.name %> — <%= store.tagline %></div>
+			</div>
 		</footer>
 		<script>
+		function toggleMobileMenu() {
+			const navLinks = document.getElementById('navLinks');
+			navLinks.classList.toggle('active');
+		}
+		
 		async function postJSON(url, data){
 			const r = await fetch(url,{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
 			return r.json();

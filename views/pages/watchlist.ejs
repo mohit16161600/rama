@@ -1,6 +1,10 @@
-<h1>Your Watchlist</h1>
+<h1>💖 Your <%= store.name %> Watchlist 💖</h1>
 <% if (items.length === 0) { %>
-	<p class="muted">No items in watchlist.</p>
+	<div style="text-align:center; padding:3rem;">
+		<h3>🌸 Your <%= store.name %> watchlist is empty 🌸</h3>
+		<p class="muted mb-3">Save your favorite Indian dresses for later</p>
+		<a href="/categories" class="btn btn-primary">🌸 Explore <%= store.name %> Collection</a>
+	</div>
 <% } else { %>
 	<div class="grid">
 		<% items.forEach(p => { %>
@@ -9,9 +13,9 @@
 				<div class="card-body">
 					<h3><a href="/product/<%= p.id %>"><%= p.name %></a></h3>
 					<p class="price">₹ <%= p.price.toLocaleString('en-IN') %></p>
-					<div style="display:flex; gap:8px;">
-						<button class="pill" onclick="postJSON('/cart/add',{productId:'<%= p.id %>', qty:1}).then(()=>location.href='/cart')">Add to cart</button>
-						<button onclick="postJSON('/watchlist/toggle',{productId:'<%= p.id %>'}).then(()=>location.reload())">Remove ❤</button>
+					<div class="card-actions">
+						<button class="btn btn-primary" onclick="postJSON('/cart/add',{productId:'<%= p.id %>', qty:1}).then(()=>location.href='/cart')">🛍️ Add to Cart</button>
+						<button class="btn btn-secondary" onclick="postJSON('/watchlist/toggle',{productId:'<%= p.id %>'}).then(()=>location.reload())">💔 Remove</button>
 					</div>
 				</div>
 			</div>

@@ -5,49 +5,98 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title><%= (title ? title + ' · ' : '') %><%= store.name %></title>
 		<link rel="stylesheet" href="/css/styles.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<header class="header">
 			<div class="container nav">
-				<a href="/" class="brand"><%= store.name %></a>
-				<a href="/categories">Categories</a>
-				<span class="spacer"></span>
-				<a href="/watchlist" class="pill">Watchlist (<%= (session.watchlist||[]).length %>)</a>
-				<a href="/cart" class="pill">Cart (<%= (session.cart||[]).reduce((n,ci)=>n+ci.qty,0) %>)</a>
+				<a href="/" class="brand">🌸 <%= store.name %></a>
+				<button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+				<div class="nav-links" id="navLinks">
+					<a href="/">Home</a>
+					<a href="/categories">Categories</a>
+					<a href="#about">About <%= store.name %></a>
+					<a href="#contact">Contact</a>
+				</div>
+				<div class="nav-actions">
+					<a href="/watchlist" class="pill">💖 Watchlist (<%= (session.watchlist||[]).length %>)</a>
+					<a href="/cart" class="pill">🛍️ Cart (<%= (session.cart||[]).reduce((n,ci)=>n+ci.qty,0) %>)</a>
+				</div>
 			</div>
 		</header>
 		<main class="container">
-			<div class="grid" style="grid-template-columns:1.1fr 1fr;align-items:start;gap:24px;">
-	<div>
+			<div class="grid" style="grid-template-columns:1fr;align-items:start;gap:3rem;">
+	<div class="hero-image">
 		<img src="<%= (product.images&&product.images[0]) || '' %>" alt="<%= product.name %>" onerror="this.src='https://picsum.photos/seed/'+encodeURIComponent('<%= product.id %>')+'/800/600'"/>
 	</div>
 	<div>
-		<h1><%= product.name %></h1>
+		<h1>👗 <%= product.name %> 👗</h1>
 		<p class="price">₹ <%= product.price.toLocaleString('en-IN') %></p>
 		<p class="muted"><%= product.description %></p>
 		<% if (product.options) { Object.entries(product.options).forEach(([k,vals])=>{ %>
-			<div style="margin:12px 0;">
-				<label style="display:block;font-weight:600;margin-bottom:6px;text-transform:capitalize;"> <%= k %> </label>
-				<select style="padding:8px;border-radius:8px;border:1px solid #ddd;width:100%">
+			<div style="margin:1.5rem 0;">
+				<label style="display:block;font-weight:600;margin-bottom:0.5rem;">🌸 <%= k.charAt(0).toUpperCase() + k.slice(1) %></label>
+				<select style="padding:0.75rem;border-radius:8px;border:2px solid var(--border);width:100%">
 					<% vals.forEach(v=>{ %>
 						<option><%= v %></option>
 					<% }) %>
 				</select>
 			</div>
 		<% }) } %>
-		<div style="display:flex; gap:8px; align-items:center; margin-top:8px;">
-			<input id="qty" type="number" min="1" value="1" style="width:80px;padding:8px;border-radius:8px;border:1px solid #ddd"/>
-			<button class="pill" onclick="postJSON('/cart/add',{productId:'<%= product.id %>', qty:document.getElementById('qty').value}).then(()=>location.href='/cart')">Add to cart</button>
-			<button onclick="postJSON('/watchlist/toggle',{productId:'<%= product.id %>'}).then(()=>location.reload())">❤ <%= (session.watchlist||[]).includes(product.id)?'Watching':'Watch' %></button>
+		<div style="display:flex; gap:1rem; align-items:center; margin-top:2rem; flex-wrap:wrap;">
+			<input id="qty" type="number" min="1" value="1" style="width:100px;padding:0.75rem;border-radius:8px;border:2px solid var(--border)"/>
+			<button class="btn btn-primary" onclick="postJSON('/cart/add',{productId:'<%= product.id %>', qty:document.getElementById('qty').value}).then(()=>location.href='/cart')">🛍️ Add to Cart</button>
+			<button class="btn btn-secondary" onclick="postJSON('/watchlist/toggle',{productId:'<%= product.id %>'}).then(()=>location.reload())">💖 <%= (session.watchlist||[]).includes(product.id)?'Watching':'Watchlist' %></button>
+		</div>
+		
+		<div style="margin-top:2rem; padding:1.5rem; background:var(--accent); border-radius:15px;">
+			<h4>✨ <%= store.name %> Features:</h4>
+			<ul style="margin:1rem 0; padding-left:1.5rem;">
+				<li>🌸 Handcrafted embroidery</li>
+				<li>🌸 Premium fabrics</li>
+				<li>🌸 Custom tailoring included</li>
+				<li>🌸 Perfect fit guarantee</li>
+				<li>🌸 <%= store.name %> quality assurance</li>
+			</ul>
 		</div>
 	</div>
 </div>
-
 		</main>
 		<footer class="footer container">
-			<div>&copy; <%= new Date().getFullYear() %> <%= store.name %> — <%= store.tagline %></div>
+			<div class="footer-content">
+				<div class="footer-section">
+					<h4>🌸 <%= store.name %></h4>
+					<p>Premium tailored Indian dresses crafted with love and precision. <%= store.name %> brings you the finest collection of traditional wear.</p>
+				</div>
+				<div class="footer-section">
+					<h4>Quick Links</h4>
+					<p><a href="/">Rama Store Home</a></p>
+					<p><a href="/categories">Rama Store Categories</a></p>
+					<p><a href="/cart">Rama Store Cart</a></p>
+					<p><a href="/watchlist">Rama Store Watchlist</a></p>
+				</div>
+				<div class="footer-section">
+					<h4>Rama Store Categories</h4>
+					<p><a href="/category/lehenga">Rama Store Lehengas</a></p>
+					<p><a href="/category/saree">Rama Store Saree Blouses</a></p>
+					<p><a href="/category/salwar">Rama Store Salwar Suits</a></p>
+				</div>
+				<div class="footer-section">
+					<h4>Contact Rama Store</h4>
+					<p>📧 Email: info@ramastore.com</p>
+					<p>📞 Phone: +91-XXXX-XXXX</p>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div>&copy; <%= new Date().getFullYear() %> <%= store.name %> — <%= store.tagline %></div>
+			</div>
 		</footer>
 		<script>
+		function toggleMobileMenu() {
+			const navLinks = document.getElementById('navLinks');
+			navLinks.classList.toggle('active');
+		}
+		
 		async function postJSON(url, data){
 			const r = await fetch(url,{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
 			return r.json();

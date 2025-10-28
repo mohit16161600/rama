@@ -1,25 +1,25 @@
 {
   "store": {
-    "name": "Sartaj Tailored Indian Dresses",
-    "tagline": "Made-to-measure elegance",
+    "name": "Rama Store",
+    "tagline": "Premium Tailored Indian Dresses",
     "currency": "INR"
   },
   "categories": [
     {
       "id": "lehenga",
-      "name": "Lehenga",
+      "name": "Rama Store Lehengas",
       "heroImage": "/img/lehenga-hero.jpg",
       "description": "Handcrafted lehengas tailored to your measurements."
     },
     {
       "id": "saree",
-      "name": "Saree Blouses",
+      "name": "Rama Store Saree Blouses",
       "heroImage": "/img/saree-hero.jpg",
-      "description": "Bespoke blouses that fit like a dream."
+      "description": "Bespoke saree blouses that fit like a dream."
     },
     {
       "id": "salwar",
-      "name": "Salwar Suits",
+      "name": "Rama Store Salwar Suits",
       "heroImage": "/img/salwar-hero.jpg",
       "description": "Churidars, Anarkalis, and more, cut to perfection."
     }
@@ -28,7 +28,7 @@
     {
       "id": "lehenga-rose-gold",
       "categoryId": "lehenga",
-      "name": "Rose Gold Zari Lehenga",
+      "name": "Rama Store Rose Gold Zari Lehenga",
       "price": 29999,
       "images": ["/img/lehenga1.jpg"],
       "description": "Intricate zari work with organza dupatta. Tailored to your exact size.",
@@ -41,7 +41,7 @@
     {
       "id": "blouse-kundan",
       "categoryId": "saree",
-      "name": "Kundan Work Blouse",
+      "name": "Rama Store Kundan Work Blouse",
       "price": 4999,
       "images": ["/img/blouse1.jpg"],
       "description": "Statement kundan accents with secure lining.",
@@ -53,7 +53,7 @@
     {
       "id": "anarkali-emerald",
       "categoryId": "salwar",
-      "name": "Emerald Anarkali Set",
+      "name": "Rama Store Emerald Anarkali Set",
       "price": 14999,
       "images": ["/img/anarkali1.jpg"],
       "description": "Flowing silhouette with hand-embroidered yoke.",

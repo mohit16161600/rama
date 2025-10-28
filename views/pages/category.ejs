@@ -1,5 +1,5 @@
-<h1><%= category.name %></h1>
-<p class="muted"><%= category.description %></p>
+<h1>👗 <%= category.name %> 👗</h1>
+<p class="text-center muted mb-4">Discover our exquisite collection of handcrafted lehengas. Each <%= store.name %> lehenga is meticulously tailored to your measurements, combining traditional craftsmanship with contemporary elegance.</p>
 <div class="grid">
 	<% items.forEach(p => { %>
 		<div class="card">
@@ -7,11 +7,30 @@
 			<div class="card-body">
 				<h3><a href="/product/<%= p.id %>"><%= p.name %></a></h3>
 				<p class="price">₹ <%= p.price.toLocaleString('en-IN') %></p>
-				<div style="display:flex; gap:8px;">
-					<button class="pill" onclick="postJSON('/cart/add',{productId:'<%= p.id %>', qty:1}).then(()=>location.reload())">Add to cart</button>
-					<button onclick="postJSON('/watchlist/toggle',{productId:'<%= p.id %>'}).then(()=>location.reload())">❤ Watch</button>
+				<p class="muted"><%= p.description %></p>
+				<div class="card-actions">
+					<button class="btn btn-primary" onclick="postJSON('/cart/add',{productId:'<%= p.id %>', qty:1}).then(()=>location.reload())">🛍️ Add to Cart</button>
+					<button class="btn btn-secondary" onclick="postJSON('/watchlist/toggle',{productId:'<%= p.id %>'}).then(()=>location.reload())">💖 Watchlist</button>
 				</div>
 			</div>
 		</div>
 	<% }) %>
 </div>
+
+<section style="margin: 4rem 0; padding: 3rem; background: var(--white); border-radius: 20px; box-shadow: 0 10px 30px var(--shadow);">
+	<h2>✨ Why Choose <%= store.name %> Lehengas? ✨</h2>
+	<div class="grid">
+		<div class="text-center">
+			<h4>🌸 Custom Tailoring</h4>
+			<p>Every <%= store.name %> lehenga is tailored to your exact measurements for the perfect fit.</p>
+		</div>
+		<div class="text-center">
+			<h4>🌸 Premium Fabrics</h4>
+			<p><%= store.name %> uses only the finest silk, organza, and georgette fabrics for our lehengas.</p>
+		</div>
+		<div class="text-center">
+			<h4>🌸 Handcrafted Details</h4>
+			<p>Intricate embroidery and zari work make each <%= store.name %> lehenga a work of art.</p>
+		</div>
+	</div>
+</section>

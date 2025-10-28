@@ -5,32 +5,42 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title><%= (title ? title + ' · ' : '') %><%= store.name %></title>
 		<link rel="stylesheet" href="/css/styles.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<header class="header">
 			<div class="container nav">
-				<a href="/" class="brand"><%= store.name %></a>
-				<a href="/categories">Categories</a>
-				<span class="spacer"></span>
-				<a href="/watchlist" class="pill">Watchlist (<%= (session.watchlist||[]).length %>)</a>
-				<a href="/cart" class="pill">Cart (<%= (session.cart||[]).reduce((n,ci)=>n+ci.qty,0) %>)</a>
+				<a href="/" class="brand">🌸 <%= store.name %></a>
+				<button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+				<div class="nav-links" id="navLinks">
+					<a href="/">Home</a>
+					<a href="/categories">Categories</a>
+					<a href="#about">About <%= store.name %></a>
+					<a href="#contact">Contact</a>
+				</div>
+				<div class="nav-actions">
+					<a href="/watchlist" class="pill">💖 Watchlist (<%= (session.watchlist||[]).length %>)</a>
+					<a href="/cart" class="pill">🛍️ Cart (<%= (session.cart||[]).reduce((n,ci)=>n+ci.qty,0) %>)</a>
+				</div>
 			</div>
 		</header>
 		<main class="container">
 			<% /* Hero */ %>
 <section class="hero">
-	<div>
-		<h1>Tailored Indian Dresses</h1>
-		<p class="muted">Crafted to your measurements for comfort and confidence.</p>
-		<p><a class="pill" href="/categories">Explore Categories</a></p>
-	</div>
-	<div>
-		<img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=1600&auto=format&fit=crop" alt="Tailored Dresses" />
+	<div class="hero-content">
+		<div class="hero-text">
+			<h1>✨ Premium Tailored Indian Dresses by <%= store.name %> ✨</h1>
+			<p class="muted">Discover the finest collection of handcrafted Indian dresses at <%= store.name %>. From elegant lehengas to sophisticated saree blouses, each piece is tailored to perfection for your special occasions.</p>
+			<a class="pill" href="/categories">🌸 Explore <%= store.name %> Collection</a>
+		</div>
+		<div class="hero-image">
+			<img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=800&auto=format&fit=crop" alt="<%= store.name %> Premium Indian Dresses Collection" />
+		</div>
 	</div>
 </section>
 
 <% /* Categories grid */ %>
-<h2>Shop by Category</h2>
+<h2>🌸 <%= store.name %> Categories 🌸</h2>
 <div class="grid">
 	<% featuredCategories.forEach(c => { %>
 		<a class="card" href="/category/<%= c.id %>">
@@ -38,13 +48,16 @@
 			<div class="card-body">
 				<h3><%= c.name %></h3>
 				<p class="muted"><%= c.description %></p>
+				<div class="card-actions">
+					<a href="/category/<%= c.id %>" class="btn btn-primary">🌸 Shop <%= c.name %></a>
+				</div>
 			</div>
 		</a>
 	<% }) %>
 </div>
 
 <% /* Featured products */ %>
-<h2 style="margin-top:28px;">Featured</h2>
+<h2 style="margin-top:28px;">✨ <%= store.name %> Featured Collection ✨</h2>
 <div class="grid">
 	<% featuredProducts.forEach(p => { %>
 		<div class="card">
@@ -52,20 +65,58 @@
 			<div class="card-body">
 				<h3><a href="/product/<%= p.id %>"><%= p.name %></a></h3>
 				<p class="price">₹ <%= p.price.toLocaleString('en-IN') %></p>
-				<div style="display:flex; gap:8px;">
-					<button class="pill" onclick="postJSON('/cart/add',{productId:'<%= p.id %>', qty:1}).then(()=>location.reload())">Add to cart</button>
-					<button onclick="postJSON('/watchlist/toggle',{productId:'<%= p.id %>'}).then(()=>location.reload())">❤ Watch</button>
+				<p class="muted"><%= p.description %></p>
+				<div class="card-actions">
+					<button class="btn btn-primary" onclick="postJSON('/cart/add',{productId:'<%= p.id %>', qty:1}).then(()=>location.reload())">🛍️ Add to Cart</button>
+					<button class="btn btn-secondary" onclick="postJSON('/watchlist/toggle',{productId:'<%= p.id %>'}).then(()=>location.reload())">💖 Watchlist</button>
 				</div>
 			</div>
 		</div>
 	<% }) %>
 </div>
 
+<% /* About Rama Store Section */ %>
+<section id="about" style="margin: 4rem 0; padding: 3rem; background: var(--white); border-radius: 20px; box-shadow: 0 10px 30px var(--shadow);">
+	<h2>🌸 About <%= store.name %> 🌸</h2>
+	<p><%= store.name %> has been crafting premium Indian dresses for over a decade, combining traditional techniques with modern design sensibilities. Each <%= store.name %> creation is meticulously tailored to ensure the perfect fit and exceptional quality.</p>
+	<p>Our <%= store.name %> collection features handpicked fabrics, intricate embroidery, and attention to detail that sets us apart in the world of Indian fashion. From wedding lehengas to everyday salwar suits, <%= store.name %> offers something special for every occasion.</p>
+</section>
 		</main>
 		<footer class="footer container">
-			<div>&copy; <%= new Date().getFullYear() %> <%= store.name %> — <%= store.tagline %></div>
+			<div class="footer-content">
+				<div class="footer-section">
+					<h4>🌸 <%= store.name %></h4>
+					<p>Premium tailored Indian dresses crafted with love and precision. <%= store.name %> brings you the finest collection of traditional wear.</p>
+				</div>
+				<div class="footer-section">
+					<h4>Quick Links</h4>
+					<p><a href="/">Rama Store Home</a></p>
+					<p><a href="/categories">Rama Store Categories</a></p>
+					<p><a href="/cart">Rama Store Cart</a></p>
+					<p><a href="/watchlist">Rama Store Watchlist</a></p>
+				</div>
+				<div class="footer-section">
+					<h4>Rama Store Categories</h4>
+					<p><a href="/category/lehenga">Rama Store Lehengas</a></p>
+					<p><a href="/category/saree">Rama Store Saree Blouses</a></p>
+					<p><a href="/category/salwar">Rama Store Salwar Suits</a></p>
+				</div>
+				<div class="footer-section">
+					<h4>Contact Rama Store</h4>
+					<p>📧 Email: info@ramastore.com</p>
+					<p>📞 Phone: +91-XXXX-XXXX</p>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div>&copy; <%= new Date().getFullYear() %> <%= store.name %> — <%= store.tagline %></div>
+			</div>
 		</footer>
 		<script>
+		function toggleMobileMenu() {
+			const navLinks = document.getElementById('navLinks');
+			navLinks.classList.toggle('active');
+		}
+		
 		async function postJSON(url, data){
 			const r = await fetch(url,{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
 			return r.json();

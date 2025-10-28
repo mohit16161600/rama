@@ -1,25 +1,36 @@
-<div class="grid" style="grid-template-columns:1.1fr 1fr;align-items:start;gap:24px;">
-	<div>
+<div class="grid" style="grid-template-columns:1fr;align-items:start;gap:3rem;">
+	<div class="hero-image">
 		<img src="<%= (product.images&&product.images[0]) || '' %>" alt="<%= product.name %>" onerror="this.src='https://picsum.photos/seed/'+encodeURIComponent('<%= product.id %>')+'/800/600'"/>
 	</div>
 	<div>
-		<h1><%= product.name %></h1>
+		<h1>👗 <%= product.name %> 👗</h1>
 		<p class="price">₹ <%= product.price.toLocaleString('en-IN') %></p>
 		<p class="muted"><%= product.description %></p>
 		<% if (product.options) { Object.entries(product.options).forEach(([k,vals])=>{ %>
-			<div style="margin:12px 0;">
-				<label style="display:block;font-weight:600;margin-bottom:6px;text-transform:capitalize;"> <%= k %> </label>
-				<select style="padding:8px;border-radius:8px;border:1px solid #ddd;width:100%">
+			<div style="margin:1.5rem 0;">
+				<label style="display:block;font-weight:600;margin-bottom:0.5rem;">🌸 <%= k.charAt(0).toUpperCase() + k.slice(1) %></label>
+				<select style="padding:0.75rem;border-radius:8px;border:2px solid var(--border);width:100%">
 					<% vals.forEach(v=>{ %>
 						<option><%= v %></option>
 					<% }) %>
 				</select>
 			</div>
 		<% }) } %>
-		<div style="display:flex; gap:8px; align-items:center; margin-top:8px;">
-			<input id="qty" type="number" min="1" value="1" style="width:80px;padding:8px;border-radius:8px;border:1px solid #ddd"/>
-			<button class="pill" onclick="postJSON('/cart/add',{productId:'<%= product.id %>', qty:document.getElementById('qty').value}).then(()=>location.href='/cart')">Add to cart</button>
-			<button onclick="postJSON('/watchlist/toggle',{productId:'<%= product.id %>'}).then(()=>location.reload())">❤ <%= (session.watchlist||[]).includes(product.id)?'Watching':'Watch' %></button>
+		<div style="display:flex; gap:1rem; align-items:center; margin-top:2rem; flex-wrap:wrap;">
+			<input id="qty" type="number" min="1" value="1" style="width:100px;padding:0.75rem;border-radius:8px;border:2px solid var(--border)"/>
+			<button class="btn btn-primary" onclick="postJSON('/cart/add',{productId:'<%= product.id %>', qty:document.getElementById('qty').value}).then(()=>location.href='/cart')">🛍️ Add to Cart</button>
+			<button class="btn btn-secondary" onclick="postJSON('/watchlist/toggle',{productId:'<%= product.id %>'}).then(()=>location.reload())">💖 <%= (session.watchlist||[]).includes(product.id)?'Watching':'Watchlist' %></button>
+		</div>
+		
+		<div style="margin-top:2rem; padding:1.5rem; background:var(--accent); border-radius:15px;">
+			<h4>✨ <%= store.name %> Features:</h4>
+			<ul style="margin:1rem 0; padding-left:1.5rem;">
+				<li>🌸 Handcrafted embroidery</li>
+				<li>🌸 Premium fabrics</li>
+				<li>🌸 Custom tailoring included</li>
+				<li>🌸 Perfect fit guarantee</li>
+				<li>🌸 <%= store.name %> quality assurance</li>
+			</ul>
 		</div>
 	</div>
 </div>
