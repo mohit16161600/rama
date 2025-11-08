@@ -1,1 +1,4 @@
-rama.mohitkoli.info
+Type: CNAME
+Name: rama
+Value: yourapphost.example.com
+TTL: Auto

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rama Plazo Collection - Designer Plazo Suits by Rama Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover Rama Store's exclusive designer Plazo Collection. Shop stylish plazos, contemporary plazo suits, and premium ethnic wear by Rama. Perfect comfort and elegant fit for weddings, festive occasions, and modern fashion.">
+    <meta name="keywords" content="Rama Plazo Collection, Rama Store plazo, plazo suits, designer plazo, ethnic wear, Rama plazo suits, wedding plazo, festive plazo, contemporary ethnic wear, Indian plazo sets">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ramastore.com/category-plazo.html">
+    <meta property="og:title" content="Rama Plazo Collection - Designer Plazo Suits by Rama Store">
+    <meta property="og:description" content="Shop the latest designer plazo suits and ethnic plazos from Rama Store. Stylish, comfortable, and tailored to perfection.">
+    <meta property="og:image" content="https://ramastore.com/assets/plazo-banner.jpg">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container p-4">
+            <nav class="nav navbar-expand-lg navbar-light">
+                <div class="flex items-center justify-between w-full md:w-auto">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpOquFa4zK3k4DkByopq8iWoBDbSaVYyMRTQ&s" alt="Rama Store Logo" class="w-10 h-10 rounded-full">
+                    <a href="index.html" class="brand">🌸 Rama Store</a>
+                    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="index.html#about">About Rama Store</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="watchlist.html" class="pill">💖 Watchlist (<span id="watchlist-count">0</span>)</a>
+                    <a href="cart.html" class="pill">🛍️ Cart (<span id="cart-count">0</span>)</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Breadcrumb -->
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">🌸 Rama Store Home</a> &gt; <a href="categories.html">Categories</a> &gt; Rama Plazo Collection
+            </nav>
+        </div>
+
+        <!-- Category Header -->
+        <section class="container">
+            <h1>👖 Rama Plazo Collection 👖</h1>
+            <p class="text-center muted mb-4">Browse our exclusive range of Rama plazo suits. Discover designer plazos tailored by Rama Store for contemporary fashion and ethnic elegance.</p>
+        </section>
+
+        <!-- Product Grid -->
+        <section class="container">
+            <div class="grid">
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1542068829-1115f7259450?q=80&w=600&auto=format&fit=crop" alt="Rama Store Pastel Embroidered Plazo Suit" loading="lazy">
+                    <div class="card-body">
+                        <h3><a href="product-plazo-pastel.html">👖 Rama Pastel Embroidered Plazo Suit</a></h3>
+                        <p class="price">₹ 9,999</p>
+                        <p class="muted">Elegant pastel plazo suit with detailed embroidery and flowy fit. Designed for sophisticated ethnic occasions by Rama.</p>
+                        <div class="card-actions">
+                            <button class="btn btn-primary" onclick="addToCart('plazo-pastel', 1)">🛍️ Add to Cart</button>
+                            <button class="btn btn-secondary" onclick="toggleWatchlist('plazo-pastel')">💖 Watchlist</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1542068829-1115f7259450?q=80&w=600&auto=format&fit=crop" alt="Rama Store Floral Printed Plazo Suit" loading="lazy">
+                    <div class="card-body">
+                        <h3><a href="product-plazo-floral.html">👖 Rama Floral Printed Plazo Suit</a></h3>
+                        <p class="price">₹ 8,499</p>
+                        <p class="muted">Trendy floral printed plazo set. Perfect for daywear and festive events, crafted with comfort and Rama's designer heritage.</p>
+                        <div class="card-actions">
+                            <button class="btn btn-primary" onclick="addToCart('plazo-floral', 1)">🛍️ Add to Cart</button>
+                            <button class="btn btn-secondary" onclick="toggleWatchlist('plazo-floral')">💖 Watchlist</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1542068829-1115f7259450?q=80&w=600&auto=format&fit=crop" alt="Rama Store Black Contemporary Plazo Suit" loading="lazy">
+                    <div class="card-body">
+                        <h3><a href="product-plazo-black.html">👖 Rama Black Contemporary Plazo Suit</a></h3>
+                        <p class="price">₹ 11,499</p>
+                        <p class="muted">Modern chic black plazo suit featuring minimal embellishments and stylish tailoring. Rama signature fit for every occasion.</p>
+                        <div class="card-actions">
+                            <button class="btn btn-primary" onclick="addToCart('plazo-black', 1)">🛍️ Add to Cart</button>
+                            <button class="btn btn-secondary" onclick="toggleWatchlist('plazo-black')">💖 Watchlist</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Rama Plazo Features -->
+        <section class="container" style="margin: 4rem 0; padding: 3rem; background: var(--white); border-radius: 20px; box-shadow: 0 10px 30px var(--shadow);">
+            <h2>✨ Why Choose Rama Plazo Suits? ✨</h2>
+            <div class="grid">
+                <div class="text-center">
+                    <h4>🌸 Designer Tailoring</h4>
+                    <p>All Rama plazos are expertly stitched for perfect comfort and fit, enhancing your unique style.</p>
+                </div>
+                <div class="text-center">
+                    <h4>🌸 Premium Fabrics</h4>
+                    <p>Rama Store selects high-quality rayon, crepe, silk, and cotton blends for premium wearability.</p>
+                </div>
+                <div class="text-center">
+                    <h4>🌸 Trending Designs</h4>
+                    <p>Modern and ethnic patterns, prints, and embroidery. Created for weddings, festivals, and all season wear by Rama.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🌸 Rama Store</h4>
+                    <p>Premium tailored Indian dresses crafted with love and precision. Rama Store brings you the finest collection of traditional and modern wear.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Rama Store Categories</h4>
+                    <p><a href="category-lehenga.html">Rama Store Lehengas</a></p>
+                    <p><a href="category-saree.html">Rama Store Saree Blouses</a></p>
+                    <p><a href="category-salwar.html">Rama Store Salwar Suits</a></p>
+                    <p><a href="category-plazo.html">Rama Plazo Collection</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <p><a href="index.html">Rama Store Home</a></p>
+                    <p><a href="categories.html">Rama Store Categories</a></p>
+                    <p><a href="cart.html">Rama Store Cart</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Rama Store</h4>
+                    <p>📧 Email: info@ramastore.com</p>
+                    <p>📞 Phone: +91-XXXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rama Store. All rights reserved. | Designer Plazo Suits by Rama Store</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        const products = {
+            'plazo-pastel': { name: 'Rama Pastel Embroidered Plazo Suit', price: 9999 },
+            'plazo-floral': { name: 'Rama Floral Printed Plazo Suit', price: 8499 },
+            'plazo-black': { name: 'Rama Black Contemporary Plazo Suit', price: 11499 }
+        };
+        function getCart() { return JSON.parse(localStorage.getItem('cart') || '[]'); }
+        function getWatchlist() { return JSON.parse(localStorage.getItem('watchlist') || '[]'); }
+        function updateCounts() {
+            const cart = getCart();
+            const watchlist = getWatchlist();
+            document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('watchlist-count').textContent = watchlist.length;
+        }
+        function addToCart(productId, qty = 1) {
+            const cart = getCart();
+            const existing = cart.find(item => item.productId === productId);
+            if (existing) { existing.qty += qty; } else { cart.push({ productId, qty }); }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCounts();
+            alert('✨ Added to Rama Store cart! ✨');
+        }
+        function toggleWatchlist(productId) {
+            const watchlist = getWatchlist();
+            const index = watchlist.indexOf(productId);
+            if (index > -1) { watchlist.splice(index, 1); alert('💔 Removed from Rama Store watchlist'); }
+            else { watchlist.push(productId); alert('💖 Added to Rama Store watchlist'); }
+            localStorage.setItem('watchlist', JSON.stringify(watchlist));
+            updateCounts();
+        }
+        document.addEventListener('DOMContentLoaded', updateCounts);
+    </script>
+</body>
+</html>

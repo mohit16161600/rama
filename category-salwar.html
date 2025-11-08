@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rama Store Salwar Suits - Premium Tailored Salwar Collection</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Shop Rama Store's tailored salwar suits collection. Handcrafted salwar suits made with premium fabrics and custom embroidery. Find your ideal Rama Store salwar suit for every occasion.">
+    <meta name="keywords" content="Rama Store salwar, premium salwar suit, tailored salwar, Rama Store salwar suits, Indian salwar suit, festive salwar, Rama Store traditional wear">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container p-4">
+            <nav class="nav navbar-expand-lg navbar-light">
+                <div class="flex items-center justify-between w-full md:w-auto">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpOquFa4zK3k4DkByopq8iWoBDbSaVYyMRTQ&s" alt="Rama Store Logo" class="w-10 h-10 rounded-full">
+                    <a href="index.html" class="brand">🌸 Rama Store</a>
+                    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="index.html#about">About Rama Store</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="watchlist.html" class="pill">💖 Watchlist (<span id="watchlist-count">0</span>)</a>
+                    <a href="cart.html" class="pill">🛍️ Cart (<span id="cart-count">0</span>)</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Breadcrumb -->
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">🌸 Rama Store Home</a> > <a href="categories.html">Categories</a> > Rama Store Salwar Suits
+            </nav>
+        </div>
+
+        <!-- Category Header -->
+        <section class="container">
+            <h1>👘 Rama Store Salwar Suits 👘</h1>
+            <p class="text-center muted mb-4">Browse our premium collection of handcrafted salwar suits. Every Rama Store salwar suit is custom tailored for a perfect fit, blending tradition and modern style.</p>
+        </section>
+
+        <!-- Products Grid -->
+        <section class="container">
+            <div class="grid">
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1542068829-1115f7259450?q=80&w=600&auto=format&fit=crop" alt="Rama Store Cream Embroidered Salwar Suit" loading="lazy">
+                    <div class="card-body">
+                        <h3><a href="product-salwar-cream.html">👘 Rama Store Cream Embroidered Salwar Suit</a></h3>
+                        <p class="price">₹ 12,999</p>
+                        <p class="muted">Classic cream salwar suit with beautiful embroidery, crafted for special occasions and celebrations.</p>
+                        <div class="card-actions">
+                            <button class="btn btn-primary" onclick="addToCart('salwar-cream', 1)">🛍️ Add to Cart</button>
+                            <button class="btn btn-secondary" onclick="toggleWatchlist('salwar-cream')">💖 Watchlist</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1542068829-1115f7259450?q=80&w=600&auto=format&fit=crop" alt="Rama Store Navy Blue Printed Salwar Suit" loading="lazy">
+                    <div class="card-body">
+                        <h3><a href="product-salwar-navy.html">👘 Rama Store Navy Blue Printed Salwar Suit</a></h3>
+                        <p class="price">₹ 14,499</p>
+                        <p class="muted">Navy blue printed salwar suit, ideal for daily wear and festive gatherings with premium comfort.</p>
+                        <div class="card-actions">
+                            <button class="btn btn-primary" onclick="addToCart('salwar-navy', 1)">🛍️ Add to Cart</button>
+                            <button class="btn btn-secondary" onclick="toggleWatchlist('salwar-navy')">💖 Watchlist</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1542068829-1115f7259450?q=80&w=600&auto=format&fit=crop" alt="Rama Store Maroon Salwar Suit with Embellishments" loading="lazy">
+                    <div class="card-body">
+                        <h3><a href="product-salwar-maroon.html">👘 Rama Store Maroon Salwar Suit with Embellishments</a></h3>
+                        <p class="price">₹ 15,999</p>
+                        <p class="muted">Maroon suit featuring delicate embellishments with a rich finish, perfect for weddings and festive events.</p>
+                        <div class="card-actions">
+                            <button class="btn btn-primary" onclick="addToCart('salwar-maroon', 1)">🛍️ Add to Cart</button>
+                            <button class="btn btn-secondary" onclick="toggleWatchlist('salwar-maroon')">💖 Watchlist</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Rama Store Salwar Suit Features -->
+        <section class="container" style="margin: 4rem 0; padding: 3rem; background: var(--white); border-radius: 20px; box-shadow: 0 10px 30px var(--shadow);">
+            <h2>✨ Why Choose Rama Store Salwars? ✨</h2>
+            <div class="grid">
+                <div class="text-center">
+                    <h4>🌸 Custom Tailoring</h4>
+                    <p>Each Rama Store salwar suit is tailored to your measurements for a perfect, comfortable fit.</p>
+                </div>
+                <div class="text-center">
+                    <h4>🌸 Premium Fabrics</h4>
+                    <p>We use top-quality cotton, silk, georgette, and chiffon for a luxurious look and feel.</p>
+                </div>
+                <div class="text-center">
+                    <h4>🌸 Artisanal Embroidery</h4>
+                    <p>All suits feature intricate embroidery and embellishments, hand-finished by skilled artisans.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🌸 Rama Store</h4>
+                    <p>Premium tailored Indian dresses crafted with love and precision. Rama Store brings you the finest collection of traditional wear.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Rama Store Categories</h4>
+                    <p><a href="category-lehenga.html">Rama Store Lehengas</a></p>
+                    <p><a href="category-saree.html">Rama Store Saree Blouses</a></p>
+                    <p><a href="category-salwar.html">Rama Store Salwar Suits</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <p><a href="index.html">Rama Store Home</a></p>
+                    <p><a href="categories.html">Rama Store Categories</a></p>
+                    <p><a href="cart.html">Rama Store Cart</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Rama Store</h4>
+                    <p>📧 Email: info@ramastore.com</p>
+                    <p>📞 Phone: +91-XXXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rama Store. All rights reserved. | Premium Indian Dresses by Rama Store</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        const products = {
+            'salwar-cream': { name: 'Rama Store Cream Embroidered Salwar Suit', price: 12999 },
+            'salwar-navy': { name: 'Rama Store Navy Blue Printed Salwar Suit', price: 14499 },
+            'salwar-maroon': { name: 'Rama Store Maroon Salwar Suit with Embellishments', price: 15999 }
+        };
+
+        function getCart() { return JSON.parse(localStorage.getItem('cart') || '[]'); }
+        function getWatchlist() { return JSON.parse(localStorage.getItem('watchlist') || '[]'); }
+        function updateCounts() {
+            const cart = getCart();
+            const watchlist = getWatchlist();
+            document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('watchlist-count').textContent = watchlist.length;
+        }
+        function addToCart(productId, qty = 1) {
+            const cart = getCart();
+            const existing = cart.find(item => item.productId === productId);
+            if (existing) { existing.qty += qty; } else { cart.push({ productId, qty }); }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCounts();
+            alert('✨ Added to Rama Store cart! ✨');
+        }
+        function toggleWatchlist(productId) {
+            const watchlist = getWatchlist();
+            const index = watchlist.indexOf(productId);
+            if (index > -1) { watchlist.splice(index, 1); alert('💔 Removed from Rama Store watchlist'); }
+            else { watchlist.push(productId); alert('💖 Added to Rama Store watchlist'); }
+            localStorage.setItem('watchlist', JSON.stringify(watchlist));
+            updateCounts();
+        }
+        document.addEventListener('DOMContentLoaded', updateCounts);
+    </script>
+</body>
+</html>

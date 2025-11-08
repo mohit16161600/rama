@@ -1,0 +1,41 @@
+{
+    "blouses": [
+      {
+        "id": "blouse-pink-embroidered",
+        "name": "Rama Store Pink Embroidered Blouse",
+        "price": "4,999",
+        "description": "A beautifully handcrafted pink embroidered blouse featuring traditional zari work and premium cotton-silk fabric. Perfect for festive and bridal wear.",
+        "images": [
+          "https://via.placeholder.com/600x600?text=Pink+Embroidered+Blouse+1",
+          "https://via.placeholder.com/600x600?text=Pink+Embroidered+Blouse+2",
+          "https://via.placeholder.com/600x600?text=Pink+Embroidered+Blouse+3"
+        ],
+        "details": [
+          "Material: Cotton Silk Blend",
+          "Work: Zari Embroidery",
+          "Neck: Round Neck",
+          "Sleeves: Elbow Length",
+          "Closure: Back Hook"
+        ]
+      },
+      {
+        "id": "blouse-black-sequin",
+        "name": "Rama Store Black Sequin Blouse",
+        "price": "5,499",
+        "description": "An elegant black sequin blouse with a modern neckline and soft satin lining. Designed to bring shimmer and sophistication to any saree.",
+        "images": [
+          "https://via.placeholder.com/600x600?text=Black+Sequin+Blouse+1",
+          "https://via.placeholder.com/600x600?text=Black+Sequin+Blouse+2",
+          "https://via.placeholder.com/600x600?text=Black+Sequin+Blouse+3"
+        ],
+        "details": [
+          "Material: Satin Blend",
+          "Work: Heavy Sequins",
+          "Neck: Deep V Neck",
+          "Sleeves: Sleeveless",
+          "Closure: Side Zip"
+        ]
+      }
+    ]
+  }
+  

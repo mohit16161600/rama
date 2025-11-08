@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rama Store Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .thumbnail {
+            cursor: pointer;
+            border-radius: 0.5rem;
+            border: 3px solid transparent;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .thumbnail:hover {
+            transform: scale(1.05);
+        }
+        .thumbnail.active {
+            border-color: #ec4899;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="header bg-white shadow-md">
+        <!-- Your header code here... -->
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto max-w-6xl p-6 mt-8">
+        <div id="product-details-container" class="grid lg:grid-cols-5 gap-12">
+            <!-- Product Images (Left Side) -->
+            <div class="lg:col-span-3">
+                <img id="main-product-image" src="" alt="" class="w-full rounded-lg shadow-xl mb-4">
+                <div id="thumbnail-container" class="grid grid-cols-3 gap-4">
+                    <!-- Thumbnails will be loaded here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Product Info (Right Side) -->
+            <div class="lg:col-span-2">
+                <h1 id="product-name" class="text-4xl font-extrabold mb-3"></h1>
+                <p id="product-price" class="text-3xl font-bold text-pink-600 mb-6"></p>
+                <p id="product-description" class="text-gray-600 mb-6"></p>
+
+                <div class="mb-8">
+                    <h3 class="font-semibold text-lg mb-2">Details:</h3>
+                    <ul id="product-details-list" class="list-disc list-inside text-gray-600 space-y-1"></ul>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                        🛍️ Add to Cart
+                    </button>
+                    <button class="text-pink-600 hover:text-pink-700 font-bold py-3 px-6 rounded-full transition duration-300">
+                        💖 Add to Watchlist
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products Section -->
+        <section class="mt-20">
+            <h2 class="text-3xl font-bold mb-8 text-center">You Might Also Like</h2>
+            <div id="related-products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Related products will load here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-20">
+        <!-- Your footer code here... -->
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            const productId = urlParams.get('id');
+
+            if (!category || !productId) {
+                document.getElementById('product-details-container').innerHTML = '<p class="text-center text-red-500">Product not found. Please check the URL.</p>';
+                return;
+            }
+
+            fetch('products.json')
+                .then(response => response.json())
+                .then(data => {
+                    const products = data[category];
+                    const product = products.find(p => p.id === productId);
+
+                    if (product) {
+                        // Update Main Product Info
+                        document.title = product.name;
+                        document.getElementById('product-name').textContent = product.name;
+                        document.getElementById('product-price').textContent = `₹ ${product.price}`;
+                        document.getElementById('product-description').textContent = product.description;
+
+                        // Image Gallery
+                        const mainImage = document.getElementById('main-product-image');
+                        const thumbnailContainer = document.getElementById('thumbnail-container');
+                        mainImage.src = product.images[0];
+                        
+                        product.images.forEach((imgSrc, index) => {
+                            const thumb = document.createElement('img');
+                            thumb.src = imgSrc;
+                            thumb.alt = `${product.name} thumbnail ${index + 1}`;
+                            thumb.classList.add('thumbnail', 'w-full', 'h-32', 'object-cover');
+                            if (index === 0) thumb.classList.add('active');
+
+                            thumb.onclick = () => {
+                                mainImage.src = imgSrc;
+                                document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                                thumb.classList.add('active');
+                            };
+                            thumbnailContainer.appendChild(thumb);
+                        });
+
+                        // Product Details
+                        const detailsList = document.getElementById('product-details-list');
+                        product.details.forEach(detail => {
+                            const li = document.createElement('li');
+                            li.textContent = detail;
+                            detailsList.appendChild(li);
+                        });
+
+                        // Related Products
+                        const relatedProductsContainer = document.getElementById('related-products');
+                        const related = products.filter(p => p.id !== productId).slice(0, 4);
+                        related.forEach(p => {
+                            const card = `
+                                <a href="product.html?category=${category}&id=${p.id}" class="block bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                                    <img src="${p.images[0]}" alt="${p.name}" class="w-full h-56 object-cover">
+                                    <div class="p-4">
+                                        <h4 class="font-semibold text-md truncate">${p.name}</h4>
+                                        <p class="text-gray-700 font-bold mt-1">₹ ${p.price}</p>
+                                    </div>
+                                </a>`;
+                            relatedProductsContainer.innerHTML += card;
+                        });
+
+                    } else {
+                        document.getElementById('product-details-container').innerHTML = '<p class="text-center text-red-500">Product not found in the database.</p>';
+                    }
+                });
+        });
+    </script>
+</body>
+</html>
